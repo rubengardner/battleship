@@ -1,3 +1,5 @@
+import pprint
+
 def welcome_function():
     """
     Welcome function which salutes the user
@@ -48,16 +50,32 @@ def validate_board_size(data):
         return False
     return True
 
-class board:
-  def __init__(self, name, rows, columns):
-    self.name = name
-    self.rows = rows
-    self.columns = columns
+class Board:
+    def __init__(self, size):
+    
+        self.size = size
+        self.board = [[0 for x in range(self.size[0])] for y in range(self.size[1])]
+        
+        
+       
+        print(self.board)
+
+
+
+
+
+    
+    
+
 
 
 def main():
     welcome_function()
-    input_board_size()
+    board_size = input_board_size()
+
+    user_board= Board(board_size)
+    #computer_board = board(board_size)
+
 
 
 main()

@@ -16,13 +16,17 @@ def input_board_size():
         print("Please, choose number of rows (1 to 8):") 
         row = input()
         if validate_board_size(row):
+            board_size.append(int(row))
             break
 
     while True:
         print("Please, choose number of columns (1 to 8):") 
         col = input()
         if validate_board_size(col):
+            board_size.append(int(col))
             break
+        
+    return board_size
 
 
 
@@ -44,14 +48,16 @@ def validate_board_size(data):
         return False
     return True
 
-
-
-
+class board:
+  def __init__(self, name, rows, columns):
+    self.name = name
+    self.rows = rows
+    self.columns = columns
 
 
 def main():
     welcome_function()
     input_board_size()
 
-main()
 
+main()

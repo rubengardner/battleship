@@ -54,11 +54,13 @@ class Board:
     def __init__(self, size):
     
         self.size = size
-        self.board = [[0 for x in range(self.size[0])] for y in range(self.size[1])]
+        self.board = [['O' for x in range(self.size[1])] for y in range(self.size[0])]
         
         
-       
-        print(self.board)
+
+    def print(self): 
+        for row in self.board:
+            print(" ".join(row))
 
 
 
@@ -75,7 +77,7 @@ def main():
 
     user_board= Board(board_size)
     #computer_board = board(board_size)
-
+    user_board.print()
 
 
 main()

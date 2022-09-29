@@ -1,4 +1,4 @@
-import pprint
+
 
 def welcome_function():
     """
@@ -6,29 +6,31 @@ def welcome_function():
     """
     print("Welcome to this exciting match of the classic battleship game!")
     print("In this version, you will play against the machine, you will have the chance to choose how big you want your board and how many ships you would like.")
-    
+    # adding a path to instructions functions
+
 
 def input_board_size():
     """
     Inputs the user to choose the board size
     """
     board_size = []
-    print("Now you will choose the size of the board, it doesn't have to be a square, but rows and columns can be a maximun of 8 each.\n")
+    print("Now you will choose the size of the board.\n")
     while True:
-        print("Please, choose number of rows (1 to 8):") 
+        print("Please, choose number of rows (3 to 6):") 
         row = input()
         if validate_board_size(row):
             board_size.append(int(row))
             break
 
     while True:
-        print("Please, choose number of columns (1 to 8):") 
+        print("Please, choose number of columns (3 to 6):") 
         col = input()
         if validate_board_size(col):
             board_size.append(int(col))
             break
         
     return board_size
+
 
 
 
@@ -40,9 +42,9 @@ def validate_board_size(data):
     """
     try:
         check_data = int(data)
-        if check_data >= 9 or check_data <= 0:
+        if check_data >= 7 or check_data <= 2:
             raise ValueError(
-                f"Value must be between 1 and 8, you provided {check_data}"
+                f"Value must be between 3 and 6, you provided {check_data}"
             )
         
     except ValueError as e:
@@ -50,24 +52,41 @@ def validate_board_size(data):
         return False
     return True
 
-class Board:
-    def __init__(self, size):
-    
-        self.size = size
-        self.board = [['O' for x in range(self.size[1])] for y in range(self.size[0])]
-        
-        
 
+def input_number_of_ship():
+
+    print("Choose the number ships per user.\n")
+    while True:
+        print("Please, choose between 3 to 8:") 
+        boats = input()
+        if validate_boat_fleet(boats):
+            print("Number of boats is valid!")
+            break
+
+def validate_boat_fleet(data):
+    try:
+        check_data = int(data)
+        if check_data >= 9 or check_data <= 2:
+            raise ValueError(
+                f"Value must be between 3 and 8, you provided {check_data}"
+            )       
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+    return True
+
+class Board:
+    """
+    Class that creates the boards for the user and the enemy
+    """
+    def __init__(self, size, boats):
+        self.size = size
+        self.boats = boats
+        self.board = [['O' for x in range(self.size[1])] for y in range(self.size[0])]
+    
     def print(self): 
         for row in self.board:
-            print(" ".join(row))
-
-
-
-
-
-    
-    
+            print(" ".join(row))  
 
 
 
@@ -76,7 +95,7 @@ def main():
     board_size = input_board_size()
 
     user_board= Board(board_size)
-    #computer_board = board(board_size)
+    # computer_board = board(board_size)
     user_board.print()
 
 

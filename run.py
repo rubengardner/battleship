@@ -84,7 +84,7 @@ class Board:
     def __init__(self, size, boats):
         self.size = size
         self.boats = boats
-        self.board = [['O' for x in range(self.size[1])] for y in range(self.size[0])]
+        self.board = [['O' for x in range(self.size[1]+1)] for y in range(self.size[0])]
     
     def print(self): 
         for row in self.board:
@@ -92,7 +92,16 @@ class Board:
         print(self.size)
         print(self.board)
 
+    def random_boat_selection(self):
+        index1 = self.size[0]
+        index2 = self.size[1]
 
+        for boat in range(self.boats):
+            rand1 = random.randint(0, index1)
+            rand2 = random.randint(0, index2)
+            self.board[rand1][rand2] = 'X'
+
+            
 
 def main():
     welcome_function()
@@ -101,6 +110,9 @@ def main():
     user_board= Board(board_size, fleet_size)
     # computer_board = board(board_size)
     user_board.print()
+    user_board.random_boat_selection()
+    user_board.print()
+
 
 
 main()

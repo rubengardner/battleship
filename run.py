@@ -84,7 +84,10 @@ class Board:
     def __init__(self, size, boats):
         self.size = size
         self.boats = boats
-        self.board = [['O' for x in range(self.size[1]+1)] for y in range(self.size[0])]
+        self.board = [['O' for x in range(self.size[1])] for y in range(self.size[0])]
+        self.guess = []
+        self.miss = []
+        self.boat_placement = []
     
     def print(self): 
         for row in self.board:
@@ -93,13 +96,29 @@ class Board:
         print(self.board)
 
     def random_boat_selection(self):
-        index1 = self.size[0]
-        index2 = self.size[1]
-
+        index1 = self.size[0] - 1
+        index2 = self.size[1] - 1
+        print(f'Index 1: {index1}, Index 2: {index2}')
         for boat in range(self.boats):
-            rand1 = random.randint(0, index1)
-            rand2 = random.randint(0, index2)
-            self.board[rand1][rand2] = 'X'
+            while True:
+                rand1 = random.randint(0, index1)
+                rand2 = random.randint(0, index2)
+                if self.validate_boat_placement(rand1, rand2):
+                    print(f"Boat nº {boat + 1} placed!")
+                    print(f"row = {rand1}, col = {rand2}")
+                    self.board[rand1][rand2] = 'X'
+                    break
+
+        print(f"All {self.boats} boats placed!")
+
+    def validate_boat_placement(self, row, col):
+    
+        coordinates = [row, col]
+        for boat in self.boat_placement:
+            if coordinates == boat:
+                return False  
+        self.boat_placement.append(coordinates)            
+        return True
 
             
 

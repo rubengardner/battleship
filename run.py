@@ -1,4 +1,4 @@
-
+import random
 
 def welcome_function():
     """
@@ -16,19 +16,19 @@ def input_board_size():
     board_size = []
     print("Now you will choose the size of the board.\n")
     while True:
-        print("Please, choose number of rows (3 to 6):") 
+        print("Please, choose number of rows (3 to 6):")
         row = input()
         if validate_board_size(row):
             board_size.append(int(row))
             break
 
     while True:
-        print("Please, choose number of columns (3 to 6):") 
+        print("Please, choose number of columns (3 to 6):")
         col = input()
         if validate_board_size(col):
             board_size.append(int(col))
             break
-        
+
     return board_size
 
 
@@ -53,7 +53,7 @@ def validate_board_size(data):
     return True
 
 
-def input_number_of_ship():
+def input_fleet_size():
 
     print("Choose the number ships per user.\n")
     while True:
@@ -62,6 +62,8 @@ def input_number_of_ship():
         if validate_boat_fleet(boats):
             print("Number of boats is valid!")
             break
+
+    return int(boats)
 
 def validate_boat_fleet(data):
     try:
@@ -87,14 +89,16 @@ class Board:
     def print(self): 
         for row in self.board:
             print(" ".join(row))  
+        print(self.size)
+        print(self.board)
 
 
 
 def main():
     welcome_function()
     board_size = input_board_size()
-
-    user_board= Board(board_size)
+    fleet_size = input_fleet_size()
+    user_board= Board(board_size, fleet_size)
     # computer_board = board(board_size)
     user_board.print()
 

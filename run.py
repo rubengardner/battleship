@@ -1,4 +1,5 @@
 import random
+import os
 
 def welcome_function():
     """
@@ -28,7 +29,7 @@ def input_board_size():
         if validate_board_size(col):
             board_size.append(int(col))
             break
-
+    os.system("cls" if os.name == "nt" else "clear")
     return board_size
 
 
@@ -62,7 +63,7 @@ def input_fleet_size():
         if validate_boat_fleet(boats):
             print("Number of boats is valid!")
             break
-
+    os.system("cls" if os.name == "nt" else "clear")
     return int(boats)
 
 def validate_boat_fleet(data):
@@ -91,9 +92,7 @@ class Board:
     
     def print(self): 
         for row in self.board:
-            print(" ".join(row))  
-        print(self.size)
-        print(self.board)
+            print(" ".join(row))
 
     def random_boat_selection(self):
         index1 = self.size[0] - 1
@@ -111,6 +110,55 @@ class Board:
 
         print(f"All {self.boats} boats placed!")
 
+    def manual_boat_placement(self):
+        print("Choose the location of the boats.")
+        print("Remember, you're grid is composed of: ")
+        print(f"{self.size[0]} rows.")
+        print(f"{self.size[1]} columns.\n")
+        
+        for boat in range(self.boats):
+            while True:
+                while True:
+                    print(f"Choose row to place boat (Must be between 1 and {self.size[0]}")
+                    row_selection = input()
+                    if self.validate_integer_input(row_selection):
+                        if self.validate_integer_range(int(row_selection)):
+                            break
+
+                while True:
+                    print(f"Choose column to place boat (Must be between 1 and {self.size[1]}")
+                    column_selection = input()
+                    if self.validate_integer_input(column_selection):
+                        if self.validate_integer_range(int(column_selection)):
+                            break
+
+                if self.validate_boat_placement(int(row_selection), int(column_selection)):
+                    print(f"Boat nº {boat + 1} placed!")
+                    self.board[int(row_selection)][int(column_selection)] = 'X'
+                    break
+                else: 
+                    print("There's already a boat in the location:")
+                    print(f"Row:{row_selection}. Column: {column_selection} ")
+
+    def validate_integer_input(self, data):
+        try:
+            check_data = int(data)
+        except ValueError as e:
+            print(f"Invalid data: {e}, please try again.\n")
+            return False
+        return True
+            
+    def validate_integer_range(self, data):   
+        try:
+            if self.size[0] <= data or data <= 0:
+                raise ValueError(
+                f"Value must be between {self.size[0]} and 0, you provided {data}"
+                )       
+        except ValueError as e:
+            print(f"Invalid data: {e}, please try again.\n")
+            return False
+        return True    
+
     def validate_boat_placement(self, row, col):
     
         coordinates = [row, col]
@@ -119,9 +167,9 @@ class Board:
                 return False  
         self.boat_placement.append(coordinates)            
         return True
-
+        
             
-
+    
 def main():
     welcome_function()
     board_size = input_board_size()
@@ -129,7 +177,7 @@ def main():
     user_board= Board(board_size, fleet_size)
     # computer_board = board(board_size)
     user_board.print()
-    user_board.random_boat_selection()
+    user_board.manual_boat_placement()
     user_board.print()
 
 

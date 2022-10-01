@@ -12,7 +12,8 @@ def welcome_function():
 
 def input_board_size():
     """
-    Inputs the user to choose the board size
+    Inputs the user to choose the board size and 
+    returns the value as a list of two integers
     """
     board_size = []
     print("Now you will choose the size of the board.\n")
@@ -38,7 +39,7 @@ def input_board_size():
 def validate_board_size(data):
     """
     Validates board size data by converting data into integer. 
-    Raises value error if value entered is not between 1 and 8.
+    Raises value error if value entered is not between 3 and 6.
     Also raises a value error if the value is not an integer.
     """
     try:
@@ -55,7 +56,9 @@ def validate_board_size(data):
 
 
 def input_fleet_size():
-
+    """
+    Inputs user to specify the number of boats per board. (Between 3 and 8)
+    """
     print("Choose the number ships per user.\n")
     while True:
         print("Please, choose between 3 to 8:") 
@@ -95,7 +98,7 @@ class Board:
             print(" ".join(row))
 
     def random_boat_selection(self):
-        index1 = self.size[0] - 1
+        index1 = self.size[0] - 1 #Converting index user friendly to python friendly
         index2 = self.size[1] - 1
         print(f'Index 1: {index1}, Index 2: {index2}')
         for boat in range(self.boats):
@@ -119,26 +122,28 @@ class Board:
         for boat in range(self.boats):
             while True:
                 while True:
-                    print(f"Choose row to place boat (Must be between 1 and {self.size[0]}")
+                    print(f"Choose row to place boat (Must be between 1 and {self.size[0]}):")
                     row_selection = input()
                     if self.validate_integer_input(row_selection):
-                        if self.validate_integer_range(int(row_selection)):
+                        if self.validate_integer_range(int(row_selection), self.size[0]):
                             break
 
                 while True:
-                    print(f"Choose column to place boat (Must be between 1 and {self.size[1]}")
+                    print(f"Choose column to place boat (Must be between 1 and {self.size[1]}):")
                     column_selection = input()
                     if self.validate_integer_input(column_selection):
-                        if self.validate_integer_range(int(column_selection)):
+                        if self.validate_integer_range(int(column_selection), self.size[1]):
                             break
 
                 if self.validate_boat_placement(int(row_selection), int(column_selection)):
                     print(f"Boat nº {boat + 1} placed!")
-                    self.board[int(row_selection)][int(column_selection)] = 'X'
+                    self.board[int(row_selection) - 1][int(column_selection) - 1] = 'X'
                     break
                 else: 
                     print("There's already a boat in the location:")
                     print(f"Row:{row_selection}. Column: {column_selection} ")
+
+        print("All boats placed correctly!")
 
     def validate_integer_input(self, data):
         try:
@@ -148,11 +153,11 @@ class Board:
             return False
         return True
             
-    def validate_integer_range(self, data):   
+    def validate_integer_range(self, data, size):   
         try:
-            if self.size[0] <= data or data <= 0:
+            if size < data or data <= 0:
                 raise ValueError(
-                f"Value must be between {self.size[0]} and 0, you provided {data}"
+                f"Value must be between {size} and 0, you provided {data}"
                 )       
         except ValueError as e:
             print(f"Invalid data: {e}, please try again.\n")

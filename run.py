@@ -100,10 +100,13 @@ class Board:
         self.miss = []
         self.boat_placement = []
     
-    def print(self): 
-        """
-        Prints out the board in friendly readable manner
-        """
+    def user_print(self): 
+        for boat in self.boat_placement:
+            self.board[boat[0]][boat[1]] = '@'
+        for guess in self.guess:
+            self.board[guess[0]][guess[1]] = 'X'
+        for miss in self.miss:
+            self.board[miss[0]][miss[1]] = '0'
         for row in self.board:
             print(" ".join(row))
 

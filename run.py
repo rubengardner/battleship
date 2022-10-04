@@ -256,6 +256,29 @@ class Board:
             self.miss.append([row, col])
             return True
 
+    def input_shot_location(self):
+
+        while True:
+            while True:
+                print("Let's fire!")
+                print(f"Choose a row between 1 and {self.size[0]}: ")  
+                row_shooting = input()
+                if self.validate_integer_input(row_shooting):
+                    row_shooting = int(row_shooting)
+                    if self.validate_integer_range(row_shooting, self.size[0]):
+                        break
+                           
+            while True:
+                print(f"Choose a column between 1 and {self.size[1]}: ")  
+                col_shooting = input()
+                if self.validate_integer_input(col_shooting):
+                    col_shooting= int(col_shooting)
+                    if self.validate_integer_range(col_shooting, self.size[0]):
+                        break
+                            
+            if self.validate_shots_taken(row_shooting - 1, col_shooting - 1):
+                break
+               
 def main():
     welcome_function()
     board_size = input_board_size()

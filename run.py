@@ -99,6 +99,7 @@ class Board:
         self.guess = []
         self.miss = []
         self.boat_placement = []
+        self.last_shot = "No shot taken"
     
     def user_print(self): 
         for boat in self.boat_placement:
@@ -238,7 +239,23 @@ class Board:
             rand2 = random.randint(0, index2)
             if self.validate_shots_taken(rand1, rand2):
                 break
-            
+
+    def validate_shots_taken(self, row, col):
+        if [row,col] in self.guess:
+            print('You already shot this location')
+            return False
+        elif [row, col] in self.miss:
+            print('You already shot this location')
+            return False
+        elif [row, col] in self.boat_placement:
+            self.last_shot = 'HIT!'
+            self.guess.append([row, col])
+            return True
+        else:
+            self.last_shot = "Miss"
+            self.miss.append([row, col])
+            return True
+
 def main():
     welcome_function()
     board_size = input_board_size()

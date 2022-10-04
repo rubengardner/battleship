@@ -230,7 +230,15 @@ class Board:
 
         print(f"All {self.boats} boats placed!")
         
-    
+    def automatic_shot_location(self):
+        index1 = self.size[0] - 1 #Converting index user friendly to python friendly
+        index2 = self.size[1] - 1
+        while True:
+            rand1 = random.randint(0, index1)
+            rand2 = random.randint(0, index2)
+            if self.validate_shots_taken(rand1, rand2):
+                break
+            
 def main():
     welcome_function()
     board_size = input_board_size()

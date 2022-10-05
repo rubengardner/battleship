@@ -70,7 +70,13 @@ def input_fleet_size():
     os.system("cls" if os.name == "nt" else "clear")
     return int(boats)
 
+#good idea to eliminate
 def validate_boat_fleet(data):
+    """
+    Validates fleet size data by converting data into integer. 
+    Raises value error if value entered is not between 3 and 8.
+    Also raises a value error if the value is not an integer.
+    """
     try:
         check_data = int(data)
         if check_data >= 9 or check_data <= 2:
@@ -95,7 +101,11 @@ class Board:
         self.boat_placement = []
         self.last_shot='No last shot'
     
-    def user_print(self): 
+    def user_print(self):
+        """
+        Prints the board in user friendly style. 
+        The location of the boats are visible.
+        """
         for boat in self.boat_placement:
             self.board[boat[0]][boat[1]] = '@'
         for guess in self.guess:
@@ -107,6 +117,10 @@ class Board:
         
 
     def enemy_print(self):
+        """
+        Prints the board without displaying the location of the boats 
+        that haven't been hit
+        """
         for guess in self.guess:
             self.board[guess[0]][guess[1]] = 'X'
         for miss in self.miss:
@@ -116,6 +130,10 @@ class Board:
         
 
     def random_boat_selection(self):
+        """
+        Inputs a random boat selection that can be used by the user 
+        and always by the enemy
+        """
         index1 = self.size[0] - 1 #Converting index user friendly to python friendly
         index2 = self.size[1] - 1
         
@@ -129,6 +147,10 @@ class Board:
         print(f"All {self.boats} boats placed!")
 
     def manual_boat_placement(self):
+        """
+        Permits the user to select the location of the boats.
+        User has to enter all the locations manually
+        """
         print("Choose the location of the boats.")
         print("Remember, you're grid is composed of: ")
         print(f"{self.size[0]} rows.")
@@ -164,6 +186,12 @@ class Board:
         print("All boats placed correctly!")
 
     def validate_integer_input(self, data):
+        """
+        Validates if the input is an intenger.
+        Used multiple times throught the creation of the board:
+        -Validation of the location of the boats
+        -Validation of the shot during the game.
+        """
         try:
             check_data = int(data)
         except ValueError as e:
@@ -171,7 +199,13 @@ class Board:
             return False
         return True
             
-    def validate_integer_range(self, data, size):   
+    def validate_integer_range(self, data, size): 
+        """
+        Validates if an integer is inside a range.
+        Used multiple times throught the creation of the board:
+        -Validation of the location of the boats
+        -Validation of the shot during the game.  
+        """
         try:
             if size < data or data <= 0:
                 raise ValueError(
@@ -183,7 +217,9 @@ class Board:
         return True    
 
     def validate_boat_placement(self, row, col):
-    
+        """
+        Validates if the location of the boat is available
+        """
         coordinates = [row, col]
         for boat in self.boat_placement:
             if coordinates == boat:
@@ -193,7 +229,11 @@ class Board:
         
 
     def input_shot_location(self):
-
+        """
+        Inputs user for the location of the desired shot
+        """
+        #If the column and row input are correct, but the shot has already been made,
+        #the while loop will resest from the begining
         while True:
             while True:
                 print("Let's fire!")
@@ -210,12 +250,18 @@ class Board:
                 if self.validate_integer_input(col_shooting):
                     col_shooting= int(col_shooting)
                     if self.validate_integer_range(col_shooting, self.size[0]):
-                        break
+                        break 
                             
             if self.validate_shots_taken(row_shooting - 1, col_shooting - 1):
                 break
+            else:
+                print("Shot has already been made! Try again.")
+                break
                
     def automatic_shot_location(self):
+        """
+        Automatic shooting for the enemy
+        """
         index1 = self.size[0] - 1 #Converting index user friendly to python friendly
         index2 = self.size[1] - 1
         while True:
@@ -227,11 +273,12 @@ class Board:
 
 
     def validate_shots_taken(self, row, col):
+        """
+        Validate if the shot hits, misses or if it's already been made
+        """
         if [row, col] in self.guess:
-            print('You already shot this location')
             return False
         elif [row, col] in self.miss:
-            print('You already shot this location')
             return False
         elif [row, col] in self.boat_placement:
             self.last_shot = 'HIT!'
@@ -241,21 +288,29 @@ class Board:
             self.last_shot = "Miss"
             self.miss.append([row, col])
             return True
-  
+
+
+
+
+    
 def main():
     welcome_function()
+    #Should I do object-oriented method?
+    #Asks for inputs about the number of boats and size of the boards
     board_size = input_board_size()
     fleet_size = input_fleet_size()
     
+    #Creates the boards for the enemy and the user
     user_board= Board(board_size, fleet_size)
     enemy_board = Board(board_size, fleet_size)
 
 
+    #Add boats on the boards
     user_board.manual_boat_placement()
-
     enemy_board.random_boat_selection()
-    
     os.system("cls" if os.name == "nt" else "clear")
+
+    #Game mechanics: stops the game when a player has won (or there is a draw)
     while True:
         if len(enemy_board.guess) == fleet_size and len(user_board.guess) == fleet_size:
             print("Draw")
@@ -267,13 +322,18 @@ def main():
             print("Loose")
             return False
         else:
+            #Displays the boards
             print("User board:")
             user_board.user_print()
-            print(f"Last enemy shot was: {user_board.last_shot} ")
             print("\n")
             print("Enemy board:")
             enemy_board.user_print()
-            print(f"Your last shot was: {enemy_board.last_shot} ")
+            print("\n")
+            
+            print(f"Your last shot was: {enemy_board.last_shot}\n ")
+            print(f"Last enemy shot was: {user_board.last_shot}\n\n ")
+
+            #Stops the loop at this points, asking for location of next shot.
             enemy_board.input_shot_location()
             user_board.automatic_shot_location()
             os.system("cls" if os.name == "nt" else "clear")

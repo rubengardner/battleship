@@ -1,12 +1,21 @@
 import random
 import os
 
+
+def title():
+    """
+    Print hangman title.
+    """
+    print("\033[1;34m")
+    print("BATTLESHIP".center(80, "-"))
+    print("\n")
+
+
 def welcome_function():
     """
     Welcome function which salutes the user
     """
-    print("Welcome to this exciting match of the classic battleship game!")
-    print("In this version, you will play against the machine,")
+    print("version, you will play against the machine,")
     print("you will have the chance to choose the size of the board and the amount of ships.")
     # adding a path to instructions functions
 
@@ -207,12 +216,13 @@ class Board:
         -Validation of the shot during the game.  
         """
         try:
+            print("\n")
             if size < data or data <= 0:
                 raise ValueError(
                 f"Value must be between {size} and 1 (including both), you provided {data}"
                 )       
         except ValueError as e:
-            print(f"Invalid data: {e}, please try again.\n")
+            print(f"Invalid data: {e}, please try again.")
             return False
         return True    
 
@@ -256,8 +266,8 @@ class Board:
                 break
             else:
                 print("Shot has already been made! Try again.")
-                break
-               
+                
+
     def automatic_shot_location(self):
         """
         Automatic shooting for the enemy

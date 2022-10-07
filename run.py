@@ -6,6 +6,8 @@ def title():
     """
     Print hangman title.
     """
+    # clear terminal
+    os.system("cls" if os.name == "nt" else "clear")
     print("\033[1;34m")
     print("BATTLESHIP".center(80, "-"))
     print("\n")
@@ -15,10 +17,58 @@ def welcome_function():
     """
     Welcome function which salutes the user
     """
-    print("version, you will play against the machine,")
-    print("you will have the chance to choose the size of the board and the amount of ships.")
-    # adding a path to instructions functions
+    title()
+    print(
+        "\033[1;34mWelcome to Battleship!\n"
+        "Would you like to see the "
+        "instructions or would you like to play already?"
+    )
 
+    ask_instructions = input(
+        "Please type 1 for the instructions, " 
+        "2 if you wish to play!:\n"
+    )
+
+    while ask_instructions != "1" and ask_instructions != "2":
+        ask_instructions = input(
+            "Invalid input, Please type 1 to "
+            "see the instructions, or 2 to play "
+            "the game:\n")
+
+    if ask_instructions == "1":
+        instructions()
+
+def instructions():
+    """
+    Explains the game and let's the usr play when 
+    heis ready
+    """
+    title()
+
+    print(
+        "Instructions:\n"
+        "You will first get asked to customize your game. "
+        "You will input the size of the board"
+        "and the number of ships you want per user.\n"
+        "After that, it's time to fire. You will choose the location "
+        "of your shot\n." 
+        "Each boat is 1 x 1. Once one of the player has no boats left, "
+        "the other player has won.\n" 
+        "If you both shoot the last boat of your oponent "
+        "on the same round, it will be a draw. \n\n")
+
+    # Ask user if they are ready to play.
+    print("Are you ready to play?")
+    ready = input("Please type 1 to continue:\n")
+    # Make sure users input is valid.
+    while ready != "1":
+        ready = input(
+            "\n\033[1;31mInvalid input, if you are ready "
+            "press 1:\n"
+        )
+    
+        
+        
 
 def input_board_size():
     """
@@ -160,6 +210,7 @@ class Board:
         Permits the user to select the location of the boats.
         User has to enter all the locations manually
         """
+        title()
         print("Choose the location of the boats.")
         print("Remember, you're grid is composed of: ")
         print(f"{self.size[0]} rows.")
@@ -190,8 +241,6 @@ class Board:
                     os.system("cls" if os.name == "nt" else "clear")
                     print("There's already a boat in that location:")
                     print(f"Row:{row_selection}. Column: {column_selection}\n ")
-
-        os.system("cls" if os.name == "nt" else "clear")
         print("All boats placed correctly!")
 
     def validate_integer_input(self, data):
@@ -204,7 +253,7 @@ class Board:
         try:
             check_data = int(data)
         except ValueError as e:
-            print(f"Invalid data: {e}, please try again.\n")
+            print(f"Invalid data: try with a number\n")
             return False
         return True
             
@@ -222,7 +271,7 @@ class Board:
                 f"Value must be between {size} and 1 (including both), you provided {data}"
                 )       
         except ValueError as e:
-            print(f"Invalid data: {e}, please try again.")
+            print(f"Invalid data: try with a number.")
             return False
         return True    
 
@@ -244,6 +293,7 @@ class Board:
         """
         #If the column and row input are correct, but the shot has already been made,
         #the while loop will resest from the begining
+        title()
         while True:
             while True:
                 print("Let's fire!")

@@ -84,9 +84,9 @@ def input_board_size():
         if validate_board_size(row):
             board_size.append(int(row))
             break
-
+    
+    title()
     while True:
-        title()
         print("\033[0;34mPlease, choose number of columns (3 to 6):")
         col = input()
         if validate_board_size(col):
@@ -107,12 +107,9 @@ def validate_board_size(data):
     try:
         check_data = int(data)
         if check_data >= 7 or check_data <= 2:
-            raise ValueError(
-                "\033[0;31m" f"Value must be between 3 and 6, you provided {check_data}"
-            )
-        
-    except ValueError as e:
-        print("\033[0;31m"f"Invalid data: {e}, please try again.\n")
+            raise ValueError()
+    except ValueError:
+        print("\033[0;31mInvalid data: submit a value between 3 and 6, please try again.\n")
         return False
     return True
 
@@ -142,11 +139,9 @@ def validate_boat_fleet(data):
     try:
         check_data = int(data)
         if check_data >= 9 or check_data <= 2:
-            raise ValueError(
-                "\033[0;31m"f"Value must be between 3 and 8, you provided {check_data}"
-            )       
-    except ValueError as e:
-        print("\033[0;31m"f"Invalid data: {e}, please try again.\n")
+            raise ValueError()       
+    except ValueError:
+        print("\033[0;31mInvalid data: submit a value between 3 and 8, please try again.\n")
         return False
     return True
 
@@ -224,16 +219,16 @@ class Board:
                 
                 print("\033[0;34m"f"Please, input boat nº {boat + 1} coordinates:")
                 while True:
-                    print(f"Row (Must be between 1 and {self.size[0]}):")
+                    print("\033[0;34m"f"Row (Must be between 1 and {self.size[0]}):")
                     row_selection = input()
-                    if self.validate_integer_input(row_selection):
+                    if self.validate_integer_input(row_selection, self.size[0]):
                         if self.validate_integer_range(int(row_selection), self.size[0]):
                             break
 
                 while True:
                     print("\033[0;34m"f"Column(Must be between 1 and {self.size[1]}):")
                     column_selection = input()
-                    if self.validate_integer_input(column_selection):
+                    if self.validate_integer_input(column_selection, self.size[1]):
                         if self.validate_integer_range(int(column_selection), self.size[1]):
                             break
 
@@ -244,10 +239,9 @@ class Board:
                 else: 
                     title()
                     print("\033[0;31mThere's already a boat in that location:")
-                    print(f"Row:{row_selection}. Column: {column_selection}\n ")
-        print("\033[0;34mAll boats placed correctly!")
+                    print(f"Row: {row_selection}. Column: {column_selection}.\n ")
 
-    def validate_integer_input(self, data):
+    def validate_integer_input(self, data, size):
         """
         Validates if the input is an intenger.
         Used multiple times throught the creation of the board:
@@ -256,9 +250,8 @@ class Board:
         """
         try:
             check_data = int(data)
-        except ValueError as e:
-            print("\033[0;31m")
-            print(f"Invalid data: try with a number\n")
+        except ValueError:
+            print("\033[0;31mInvalid data:" f" submit a value between 1 and {size}, please try again.\n")
             return False
         return True
             
@@ -271,12 +264,9 @@ class Board:
         """
         try:
             if size < data or data <= 0:
-                raise ValueError(
-                f"Value must be between {size} and 1 (including both), you provided {data}"
-                )       
-        except ValueError as e:
-            print("\033[0;31m")
-            print(f"Invalid data: try with a number.")
+                raise ValueError()       
+        except ValueError:
+            print("\033[0;31mInvalid data:" f" submit a value between 1 and {size}, please try again.\n")
             return False
         return True    
 
@@ -299,25 +289,25 @@ class Board:
         #If the column and row input are correct, but the shot has already been made,
         #the while loop will resest from the begining
         while True:
+            print("\033[0;34mLet's fire!")
             while True:
-                print("\033[0;34mLet's fire!")
-                row_shooting = input(f"Choose a row between 1 and {self.size[0]}: ")
-                if self.validate_integer_input(row_shooting):
+                row_shooting = input("\033[0;34m"f"Choose a row between 1 and {self.size[0]}: ")
+                if self.validate_integer_input(row_shooting, self.size[0]):
                     row_shooting = int(row_shooting)
                     if self.validate_integer_range(row_shooting, self.size[0]):
                         break
                            
             while True:
                 col_shooting = input("\033[0;34m"f"Choose a column between 1 and {self.size[1]}: ")
-                if self.validate_integer_input(col_shooting):
+                if self.validate_integer_input(col_shooting, self.size[1]):
                     col_shooting= int(col_shooting)
-                    if self.validate_integer_range(col_shooting, self.size[0]):
+                    if self.validate_integer_range(col_shooting, self.size[1]):
                         break 
                             
             if self.validate_shots_taken(row_shooting - 1, col_shooting - 1):
                 break
             else:
-                print("\033[0;31mShot has already been made! Try again.")
+                print("\033[0;31mShot has already been made! Try again.\n")
                 
 
     def automatic_shot_location(self):

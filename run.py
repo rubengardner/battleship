@@ -344,52 +344,67 @@ class Board:
 
 
 
-    
-def main():
-    welcome_function()
-    #Should I do object-oriented method?
-    #Asks for inputs about the number of boats and size of the boards
-    board_size = input_board_size()
-    fleet_size = input_fleet_size()
-    
-    #Creates the boards for the enemy and the user
-    user_board= Board(board_size, fleet_size)
-    enemy_board = Board(board_size, fleet_size)
-
-
-    #Add boats on the boards
-    user_board.manual_boat_placement()
-    enemy_board.random_boat_selection()
-    title()
-
-    #Game mechanics: stops the game when a player has won (or there is a draw)
+def game_mechanics(board_size, fleet_size, user, enemy,):
     while True:
-        if len(enemy_board.guess) == fleet_size and len(user_board.guess) == fleet_size:
+        if len(enemy.guess) == fleet_size and len(user.guess) == fleet_size:
             print("Draw")
             return False
-        elif len(enemy_board.guess) == fleet_size:
+        elif len(enemy.guess) == fleet_size:
             print("Win")
             return False
-        elif len(user_board.guess) == fleet_size:
+        elif len(user.guess) == fleet_size:
             print("Loose")
             return False
         else:
             #Displays the boards
             print("\033[0;34mUser board:")
-            user_board.user_print()
+            user.user_print()
             print("\n")
             print("\033[0;34mEnemy board:")
-            enemy_board.user_print()
+            enemy.user_print()
             print("\n")
-            
-
-            print("\033[0;34m"f"Your last shot was: {enemy_board.last_shot}")
-            print("\033[0;34m"f"Last enemy shot was: {user_board.last_shot}\n")
-
+            print("\033[0;34m"f"Your last shot was: {enemy.last_shot}")
+            print("\033[0;34m"f"Last enemy shot was: {user.last_shot}\n")
             #Stops the loop at this points, asking for location of next shot.
-            enemy_board.input_shot_location()
-            user_board.automatic_shot_location()
+            enemy.input_shot_location()
+            user.automatic_shot_location()
             title()
+
+def play_again():
+    title()
+    play = input("\033[0;34mDo you wish to play again? If so press 1, if not press 2.")
+    while play != "1" and play != "2":
+        play = input(
+            "\033[0;31mInvalid input, Please type 1 to "
+            "play again, or 2 to exit:\n")
+    if play == "1":
+        return False
+    else:
+        return True
+
+def main():
+    while True:
+        welcome_function()
+        #Should I do object-oriented method?
+        #Asks for inputs about the number of boats and size of the boards
+        board_size = input_board_size()
+        fleet_size = input_fleet_size()
+        
+        #Creates the boards for the enemy and the user
+        user_board= Board(board_size, fleet_size)
+        enemy_board = Board(board_size, fleet_size)
+
+
+        #Add boats on the boards
+        user_board.manual_boat_placement()
+        enemy_board.random_boat_selection()
+        title()
+
+        #Game mechanics: stops the game when a player has won (or there is a draw)
+        game_mechanics(board_size, fleet_size, user_board, enemy_board)
+        if play_again():
+            break
+        
 
 
 

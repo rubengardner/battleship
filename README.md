@@ -1,31 +1,61 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship
+Battleship is a strategy type guessing game for two players. It is played on ruled grids on which each player's fleet of warships is marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
+In this version, each boat occupies a 1 per 1 square and the opponent is the computer. All its functions have been randomized using python.
 
-Welcome rubengardner,
+<img src="images/responsive.png" alt="image of app on different sized screens">
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+[Click here to go to the live website!]
 
-## Reminders
+## Table of contents 
+1. [User experience](#user-experience)
+2. [Structure](structure)
+4. [Features](#features)
+5. [Testing](#testing)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## User experience
 
-## Creating the Heroku app
+### Project Goals:
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+* The game provides a structure that is easy to understand, navigate and interact with.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+* Contains fun colours and interactivity to engage the player in the game.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+* Customisation of the size of the board and the number of ships.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+* Incorporates a rules section that is easily accessible and understandable to the player.
 
-Connect your GitHub repository and deploy as normal.
+* Player can play as many times as he wants without the need of refreshing
 
-## Constraints
+### Color scheme
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+* Blue ("\033[0;34m"): General text
 
------
-Happy coding!
+* Red ("\033[0;31m"): Error, wrong input or loosing message
+
+* Green ("\033[0;32m"): Winning messge and correct hit
+
+* White ("\033[0;37m"): Board display and title
+
+
+## Structure 
+
+The game mechanics were conceived before starting to code. A flow chart was used for the process:
+
+* Blue: Shows either an input from the user, a calculation made by the program or displays of information on the terminal
+
+* Red: Validation of the input
+
+* Green: The flow chart continues on the next green circle
+
+Here we can see the game mechanics flowchart:
+![Game mechanics flowchart image](assets/media/flow_chart.jpg)
+
+## Features
+
+Existing features:
+
+* User selects the dificulty of the game:
+* * Chooses the size of the board (rows and columns independtly, no need for a square board)
+* * 

@@ -57,5 +57,44 @@ Here we can see the game mechanics flowchart:
 Existing features:
 
 * User selects the dificulty of the game:
-* * Chooses the size of the board (rows and columns independtly, no need for a square board)
-* * 
+    * Chooses the size of the board. Rows and columns are set independtly, no need for a square board. Sizes can be set between 3 and 6.
+
+    * Chooses the number of ships. Limited to 8, since the smallest board permits has 9 locations.
+
+* Enemy actions are randomized:
+
+    * Placement of ships
+
+    * Shooting the user
+
+* User actions are made by him:
+
+    * The location of his boats
+    
+    * Shooting the enemy
+
+* User and enemy board:
+
+    * @: marks the location a boat (Only for the user board).
+
+    * *: marks an empty location (User board) or an unknown location (enemy board).
+
+    * X (green): marks a boat that has been hit by the other player.
+
+    * 0 (red): marks a location that has been shot with no boat.
+
+* Other features:
+
+    * Instructions section
+
+    * Game can be repeated or ended at the end of each match up.
+
+    * Input errors are shown in red
+
+    * Teminal clears to avoid saturation of the console
+
+    * Title of the game is always shown
+
+    
+
+

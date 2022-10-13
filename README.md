@@ -50,16 +50,16 @@ The game mechanics were conceived before starting to code. A flow chart was used
 * Green: The flow chart continues on the next green circle
 
 Here we can see the game mechanics flowchart:
-![Game mechanics flowchart image](assets/media/flow_chart.jpg)
+![Game mechanics flowchart image](assets/images/flow_chart.jpg)
 
 ## Features
 
 Existing features:
 
-* User selects the dificulty of the game:
-    * Chooses the size of the board. Rows and columns are set independtly, no need for a square board. Sizes can be set between 3 and 6.
+* User selects the difficulty of the game:
+    * Chooses the size of the board. Rows and columns are set independently, no need for a square board. Sizes can be set between 3 and 6.
 
-    * Chooses the number of ships. Limited to 8, since the smallest board permits has 9 locations.
+    * Chooses the number of ships. Limited to 8, since the smallest board permitted has 9 locations.
 
 * Enemy actions are randomized:
 
@@ -75,7 +75,7 @@ Existing features:
 
 * User and enemy board:
 
-    * @: marks the location a boat (Only for the user board).
+    * @: marks the location of a boat (Only for the user board).
 
     * *: marks an empty location (User board) or an unknown location (enemy board).
 
@@ -87,14 +87,102 @@ Existing features:
 
     * Instructions section
 
-    * Game can be repeated or ended at the end of each match up.
+    * Game can be repeated or ended at the end of each match-up.
 
     * Input errors are shown in red
 
-    * Teminal clears to avoid saturation of the console
+    * Terminal clears to avoid saturation of the console
 
     * Title of the game is always shown
 
-    
+Future Features:
+
+* Ships with different sizes
+
+* Online matches
+
+## Testing
+
+### Validator testing
+
+GitPod was used as a validatpr testing. As seen in an image below, GitPod reported 101 problems realted to the code. After cleaning up, all the red and yellow errors were eliminated.
+
+Here we can see the GitPod errors before:
+![GitPod errors image](assets/images/python_bug.png)
+
+### Manual testing
+
+#### Welcome page
+
+
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Enter "1" | On entering "1", it directs me to the instructions section.| PASS
+Entering "2"|  On entering "2", it directs me to the game set-up section . | PASS
+Entering a something different from 1 or 2| Displays error message and asks user to enter 1 or 2 | PASS
+Blank enter| Displays error message and asks user to enter 1 or 2  | PASS
+
+
+
+#### Instructions section
+
+
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Enter "1" | On entering "1", it directs me to the game set-up section.| PASS
+Entering a something different from 1| Displays error message and asks user to enter 1. | PASS
+Blank enter| Displays error message and asks user to enter 1.| PASS
+
+####  Game set-up section
+
+
+##### Board dimensions
+
+
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Row input| On entering a row input between 3 and 6, it direct's you to the column section.| PASS
+Row wrong input| On entering a row input diferent from 3 and 6, displays errors message and asks user for a valid input. | PASS
+Row blank enter| Displays error message and asks user to enter a valid input.| PASS
+Column input| On entering a column input between 3 and 6, it direct's you to the boat section.| PASS
+Column wrong input| On entering a column input diferent from 3 and 6, displays errors message and asks user for a valid input. | PASS
+Column blank enter| Displays error message and asks user to enter a valid input.| PASS
+
+
+
+##### Number of boats
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Boat input| On entering a boat input between 3 and 8, it direct's you to the manual boat placement section.| PASS
+Boat wrong input| On entering a boat input diferent from 3 and 8, displays errors message and asks user for a valid input. | PASS
+Boat blank enter| Displays error message and asks user to enter a valid input.| PASS
+
+
+
+##### Manual boat placement
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Row input| On entering a row input between 1 and the number of rows choosen, it direct's you to the column section.| PASS
+Row wrong input| On entering a row input diferent from 1 and the number of rows choosen, displays errors message and asks user for a valid input. | PASS
+Column blank enter| Displays error message and asks user to enter a valid input.| PASS
+Column input| On entering a column input between 1 and the number of columns choosen, it direct's you to the next section.| PASS
+Column wrong input| On entering a column input diferent from 1 and the number of column choosen, displays errors message and asks user for a valid input. | PASS
+Column blank enter| Displays error message and asks user to enter a valid input.| PASS
+Duplicate value | Displays duplicate error message and asks user to enter a valid input.| PASS
+
+### Game section
+
+Shooting
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Row input| On entering a row input between 1 and the number of rows choosen, it direct's you to the column section.| PASS
+Row wrong input| On entering a row input diferent from 1 and the number of rows choosen, displays errors message and asks user for a valid input. | PASS
+Column blank enter| Displays error message and asks user to enter a valid input.| PASS
+Column input| On entering a column input between 1 and the number of columns choosen, it direct's you to the next section.| PASS
+Column wrong input| On entering a column input diferent from 1 and the number of column choosen, displays errors message and asks user for a valid input. | PASS
+Column blank enter| Displays error message and asks user to enter a valid input.| PASS
+Duplicate value | Displays duplicate error message and asks user to enter a valid input.| PASS
+
+
 
 

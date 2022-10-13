@@ -25,7 +25,7 @@ def welcome_function():
     )
 
     ask_instructions = input(
-        "Please type 1 for the instructions, " 
+        "Please type 1 for the instructions, "
         "2 if you wish to play!:\n"
     )
 
@@ -38,10 +38,11 @@ def welcome_function():
     if ask_instructions == "1":
         instructions()
 
+
 def instructions():
     """
-    Explains the game and let's the user play when 
-    heis ready
+    Explains the game and let's the user play when
+    he is ready
     """
     title()
 
@@ -51,9 +52,9 @@ def instructions():
         "You will input the size of the board"
         "and the number of ships you want per user.\n"
         "After that, it's time to fire. You will choose the location "
-        "of your shot.\n" 
+        "of your shot.\n"
         "Each boat is 1 x 1. Once one of the player has no boats left, "
-        "the other player has won.\n" 
+        "the other player has won.\n"
         "If you both shoot the last boat of your oponent "
         "on the same round, it will be a draw. \n\n")
 
@@ -66,9 +67,7 @@ def instructions():
             "\033[0;31mInvalid input, if you are ready "
             "press 1:\n"
         )
-    
-        
-        
+
 
 def input_board_size():
     """
@@ -96,11 +95,9 @@ def input_board_size():
     return board_size
 
 
-
-
 def validate_board_size(data):
     """
-    Validates board size data by converting data into integer. 
+    Validates board size data by converting data into integer.
     Raises value error if value entered is not between 3 and 6.
     Also raises a value error if the value is not an integer.
     """
@@ -109,7 +106,10 @@ def validate_board_size(data):
         if check_data >= 7 or check_data <= 2:
             raise ValueError()
     except ValueError:
-        print("\033[0;31mInvalid data: submit a value between 3 and 6, please try again.\n")
+        print(
+            "\033[0;31mInvalid data: submit"
+            " a value between 3 and 6, please try again.\n"
+        )
         return False
     return True
 
@@ -121,7 +121,7 @@ def input_fleet_size():
     title()
     print("\033[0;34mChoose the number ships per user.\n")
     while True:
-        print("\033[0;34mPlease, choose between 3 to 8:") 
+        print("\033[0;34mPlease, choose between 3 to 8:")
         boats = input()
         if validate_boat_fleet(boats):
             break
@@ -129,10 +129,11 @@ def input_fleet_size():
     
     return int(boats)
 
-#good idea to eliminate
+
+# Good idea to eliminate
 def validate_boat_fleet(data):
     """
-    Validates fleet size data by converting data into integer. 
+    Validates fleet size data by converting data into integer.
     Raises value error if value entered is not between 3 and 8.
     Also raises a value error if the value is not an integer.
     """
@@ -141,9 +142,13 @@ def validate_boat_fleet(data):
         if check_data >= 9 or check_data <= 2:
             raise ValueError()       
     except ValueError:
-        print("\033[0;31mInvalid data: submit a value between 3 and 8, please try again.\n")
+        print(
+            "\033[0;31mInvalid data: submit a value"
+            " between 3 and 8, please try again.\n"
+        )
         return False
     return True
+
 
 class Board:
     """
@@ -152,15 +157,15 @@ class Board:
     def __init__(self, size, boats):
         self.size = size
         self.boats = boats
-        self.board = [['\033[0;37m*' for x in range(self.size[1])] for y in range(self.size[0])]
+        self.board = [['\033[0;37m*' for x in range(size[1])] for y in range(size[0])]
         self.guess = []
         self.miss = []
         self.boat_placement = []
-        self.last_shot='No last shot'
-    
+        self.last_shot = 'No last shot'
+
     def user_print(self):
         """
-        Prints the board in user friendly style. 
+        Prints the board in user friendly style.
         The location of the boats are visible.
         """
         for boat in self.boat_placement:
@@ -171,11 +176,10 @@ class Board:
             self.board[miss[0]][miss[1]] = '\033[0;31m0'
         for row in self.board:
             print("\033[0;37m ".join(row))
-        
 
     def enemy_print(self):
         """
-        Prints the board without displaying the location of the boats 
+        Prints the board without displaying the location of the boats
         that haven't been hit
         """
         for guess in self.guess:
@@ -184,16 +188,16 @@ class Board:
             self.board[miss[0] - 1][miss[1]] = '\033[0;31m0'
         for row in self.board:
             print("\033[0;37m ".join(row))
-        
 
     def random_boat_selection(self):
         """
         Inputs a random boat selection that can be used by the user 
         and always by the enemy
         """
-        index1 = self.size[0] - 1 #Converting index user friendly to python friendly
+        # Converting index user friendly to python friendly
+        index1 = self.size[0] - 1
         index2 = self.size[1] - 1
-        
+
         for boat in range(self.boats):
             while True:
                 rand1 = random.randint(0, index1)
@@ -213,33 +217,44 @@ class Board:
         print("Remember, you're grid is composed of: ")
         print(f"{self.size[0]} rows.")
         print(f"{self.size[1]} columns.\n")
-        
+
         for boat in range(self.boats):
             while True:
-                
-                print("\033[0;34m"f"Please, input boat nº {boat + 1} coordinates:")
+                print(
+                    "\033[0;34m"
+                    f"Please, input boat nº {boat + 1} coordinates:"
+                )
                 while True:
-                    print("\033[0;34m"f"Row (Must be between 1 and {self.size[0]}):")
-                    row_selection = input()
-                    if self.validate_integer_input(row_selection, self.size[0]):
-                        if self.validate_integer_range(int(row_selection), self.size[0]):
+                    print(
+                        "\033[0;34m"
+                        f"Row (Must be between 1 and {self.size[0]}):"
+                    )
+                    row = input()
+                    if self.validate_integer_input(row, self.size[0]):
+                        if self.validate_range(int(row), self.size[0]):
                             break
 
                 while True:
-                    print("\033[0;34m"f"Column(Must be between 1 and {self.size[1]}):")
-                    column_selection = input()
-                    if self.validate_integer_input(column_selection, self.size[1]):
-                        if self.validate_integer_range(int(column_selection), self.size[1]):
+                    print(
+                        "\033[0;34m"
+                        f"Column(Must be between 1 and {self.size[1]}):"
+                    )
+                    column = input()
+                    if self.validate_integer_input(column, self.size[1]):
+                        if self.validate_range(int(column), self.size[1]):
                             break
 
-                if self.validate_boat_placement(int(row_selection) - 1, int(column_selection) - 1):
+                if self.validate_boat_placement(int(row) - 1, int(column) - 1):
                     title()
                     print("\033[0;34m"f"Boat nº {boat + 1} placed!\n")
                     break
-                else: 
+                else:
                     title()
                     print("\033[0;31mThere's already a boat in that location:")
-                    print(f"Row: {row_selection}. Column: {column_selection}.\n ")
+                    print(
+                        f"Row: {row}. "
+                        f"Column: {column}.\n "
+                    )
 
     def validate_integer_input(self, data, size):
         """
@@ -249,26 +264,33 @@ class Board:
         -Validation of the shot during the game.
         """
         try:
-            check_data = int(data)
+            int(data)
         except ValueError:
-            print("\033[0;31mInvalid data:" f" submit a value between 1 and {size}, please try again.\n")
+            print(
+                "\033[0;31mInvalid data:"
+                f" submit a value between 1 and {size},"
+                " please try again.\n"
+            )
             return False
         return True
-            
-    def validate_integer_range(self, data, size): 
+
+    def validate_range(self, data, size):
         """
         Validates if an integer is inside a range.
         Used multiple times throught the creation of the board:
         -Validation of the location of the boats
-        -Validation of the shot during the game.  
+        -Validation of the shot during the game.
         """
         try:
             if size < data or data <= 0:
                 raise ValueError()       
         except ValueError:
-            print("\033[0;31mInvalid data:" f" submit a value between 1 and {size}, please try again.\n")
+            print(
+                "\033[0;31mInvalid data:"
+                f" submit a value between 1 and {size},"
+                " please try again.\n")
             return False
-        return True    
+        return True
 
     def validate_boat_placement(self, row, col):
         """
@@ -277,52 +299,56 @@ class Board:
         coordinates = [row, col]
         for boat in self.boat_placement:
             if coordinates == boat:
-                return False  
-        self.boat_placement.append(coordinates)            
+                return False
+        self.boat_placement.append(coordinates)     
         return True
-        
 
     def input_shot_location(self):
         """
         Inputs user for the location of the desired shot
         """
-        #If the column and row input are correct, but the shot has already been made,
-        #the while loop will resest from the begining
+        # If the column and row input are correct,
+        # but the shot has already been made,
+        # the while loop will resest from the begining
         while True:
             print("\033[0;34mLet's fire!")
             while True:
-                row_shooting = input("\033[0;34m"f"Choose a row between 1 and {self.size[0]}: ")
+                row_shooting = input(
+                    "\033[0;34m"
+                    f"Choose a row between 1 and {self.size[0]}: "
+                )
                 if self.validate_integer_input(row_shooting, self.size[0]):
                     row_shooting = int(row_shooting)
-                    if self.validate_integer_range(row_shooting, self.size[0]):
+                    if self.validate_range(row_shooting, self.size[0]):
                         break
-                           
+
             while True:
-                col_shooting = input("\033[0;34m"f"Choose a column between 1 and {self.size[1]}: ")
+                col_shooting = input(
+                    "\033[0;34m"
+                    f"Choose a column between 1 and {self.size[1]}: "
+                )
                 if self.validate_integer_input(col_shooting, self.size[1]):
-                    col_shooting= int(col_shooting)
-                    if self.validate_integer_range(col_shooting, self.size[1]):
-                        break 
-                            
+                    col_shooting = int(col_shooting)
+                    if self.validate_range(col_shooting, self.size[1]):
+                        break
+
             if self.validate_shots_taken(row_shooting - 1, col_shooting - 1):
                 break
             else:
                 print("\033[0;31mShot has already been made! Try again.\n")
-                
 
     def automatic_shot_location(self):
         """
         Automatic shooting for the enemy
         """
-        index1 = self.size[0] - 1 #Converting index user friendly to python friendly
+        # Converting index user friendly to python friendly
+        index1 = self.size[0] - 1
         index2 = self.size[1] - 1
         while True:
             rand1 = random.randint(0, index1)
             rand2 = random.randint(0, index2)
             if self.validate_shots_taken(rand1, rand2):
                 break
-            
-
 
     def validate_shots_taken(self, row, col):
         """
@@ -334,7 +360,7 @@ class Board:
             return False
         elif [row, col] in self.boat_placement:
             self.last_shot = '\033[0;32mHIT!'
-            self.guess.append([row ,col])
+            self.guess.append([row, col])
             return True
         else:
             self.last_shot = "\033[0;31mMiss"
@@ -342,9 +368,11 @@ class Board:
             return True
 
 
-
-
-def game_mechanics(board_size, fleet_size, user, enemy,):
+def game_mechanics(fleet_size, user, enemy):
+    """
+    Game mechanics, checks if a player has won on the previous round.
+    Displays the boards and the game section
+    """
     while True:
         if len(enemy.guess) == fleet_size and len(user.guess) == fleet_size:
             print("Draw")
@@ -356,7 +384,7 @@ def game_mechanics(board_size, fleet_size, user, enemy,):
             print("Loose")
             return False
         else:
-            #Displays the boards
+            # Displays the boards
             print("\033[0;34mUser board:")
             user.user_print()
             print("\n")
@@ -365,14 +393,22 @@ def game_mechanics(board_size, fleet_size, user, enemy,):
             print("\n")
             print("\033[0;34m"f"Your last shot was: {enemy.last_shot}")
             print("\033[0;34m"f"Last enemy shot was: {user.last_shot}\n")
-            #Stops the loop at this points, asking for location of next shot.
+            # Stops the loop at this points, asking for location of next shot.
             enemy.input_shot_location()
             user.automatic_shot_location()
             title()
 
+
 def play_again():
+    """
+    Permits user to play again or to exit the game after
+    finishing 
+    """
     title()
-    play = input("\033[0;34mDo you wish to play again? If so press 1, if not press 2.")
+    play = input(
+        "\033[0;34mDo you wish to play again?"
+        " If so press 1, if not press 2:\n"
+    )
     while play != "1" and play != "2":
         play = input(
             "\033[0;31mInvalid input, Please type 1 to "
@@ -382,30 +418,28 @@ def play_again():
     else:
         return True
 
+
 def main():
+    """
+    Main function that calls all the other functions
+    """
     while True:
         welcome_function()
-        #Should I do object-oriented method?
-        #Asks for inputs about the number of boats and size of the boards
+        # Should I do object-oriented method?
+        # Asks for inputs about the number of boats and size of the boards
         board_size = input_board_size()
         fleet_size = input_fleet_size()
-        
-        #Creates the boards for the enemy and the user
-        user_board= Board(board_size, fleet_size)
+        # Creates the boards for the enemy and the user
+        user_board = Board(board_size, fleet_size)
         enemy_board = Board(board_size, fleet_size)
-
-
-        #Add boats on the boards
+        # Add boats on the boards
         user_board.manual_boat_placement()
         enemy_board.random_boat_selection()
         title()
-
-        #Game mechanics: stops the game when a player has won (or there is a draw)
-        game_mechanics(board_size, fleet_size, user_board, enemy_board)
+        # Game mechanics: stops the game when a player has won (or draw)
+        game_mechanics(fleet_size, user_board, enemy_board)
         if play_again():
             break
-        
-
 
 
 main()

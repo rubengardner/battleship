@@ -11,7 +11,7 @@ def title():
     print("\033[1;37m")
     print("BATTLESHIP".center(80, "-"))
     print("\n")
-
+    
 
 def welcome_function():
     """
@@ -126,7 +126,6 @@ def input_fleet_size():
         if validate_boat_fleet(boats):
             break
     title()
-    
     return int(boats)
 
 
@@ -375,13 +374,13 @@ def game_mechanics(fleet_size, user, enemy):
     """
     while True:
         if len(enemy.guess) == fleet_size and len(user.guess) == fleet_size:
-            print("Draw")
+            draw_section()
             return False
         elif len(enemy.guess) == fleet_size:
-            print("Win")
+            win_section()
             return False
         elif len(user.guess) == fleet_size:
-            print("Loose")
+            loose_section()
             return False
         else:
             # Displays the boards
@@ -399,12 +398,59 @@ def game_mechanics(fleet_size, user, enemy):
             title()
 
 
+def draw_section():
+    title()
+    print(
+        " _______  .______       ___   ____    __    ____\n"
+        "|       \ |   _  \     /   \  \   \  /  \  /   /\n"
+        "|  .--.  ||  |_)  |   /  ^  \  \   \/    \/   /\n"
+        "|  |  |  ||      /   /  /_\  \  \            /\n"
+        "|  '--'  ||  |\  \  /  _____  \  \    /\    /\n"
+        "|_______/ | _| \__\/__/     \__\  \__/  \__/\n"
+        "\n\n\n"
+    )
+
+
+def loose_section():
+    title()
+    print(
+        " __        ______     ______        _______. _______ .______\n"
+        "|  |      /  __  \   /  __  \      /       ||   ____||   _  \\n"
+        "|  |     |  |  |  | |  |  |  |    |   (----`|  |__   |  |_)  |\n"
+        "|  |     |  |  |  | |  |  |  |     \   \    |   __|  |      /\n"
+        "|  |____.|  `--'  | |  `--'  | .----)   |   |  |____ |  |\  \\n"
+        "|_______| \______/   \______/  |_______/    |_______|| _| \__|\n"
+        "\n\n\n"
+    )
+
+
+def win_section():
+    title()
+    print(
+        "____    ____  ______    __    __ \n"
+        "\   \  /   / /  __  \  |  |  |  |\n"
+        " \   \/   / |  |  |  | |  |  |  |\n"
+        "  \_    _/  |  |  |  | |  |  |  |\n"
+        "    |  |    |  `--'  | |  `--'  |\n"
+        "    |__|     \______/   \______/  \n\n"
+    )
+    print(
+        "____    __    ____  ______   .__   __.  __\n"
+        "\   \  /  \  /   / /  __  \  |  \ |  | |  |\n"
+        " \   \/    \/   / |  |  |  | |   \|  | |  |\n"
+        "  \            /  |  |  |  | |  . `  | |  |\n"
+        "   \    /\    /   |  `--'  | |  |\   | |__|\n"
+        "    \__/  \__/     \______/  |__| \__| (__)\n\n\n\n"
+        
+    )
+
+
 def play_again():
     """
     Permits user to play again or to exit the game after
-    finishing 
+    finishing
     """
-    title()
+    
     play = input(
         "\033[0;34mDo you wish to play again?"
         " If so press 1, if not press 2:\n"
@@ -415,8 +461,7 @@ def play_again():
             "play again, or 2 to exit:\n")
     if play == "1":
         return False
-    else:
-        return True
+    return True
 
 
 def main():

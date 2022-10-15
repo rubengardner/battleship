@@ -186,3 +186,31 @@ Duplicate value | Displays duplicate error message and asks user to enter a vali
 
 
 
+## Deployment 
+
+Steps to the deployement:
+
+1. All installed packages in Gitpod,  would need to be added to a list of requirements. 
+- To do this I would have typed pip3 freeze > requirements.txt and hit enter, this would update the requirements.txt file.
+- Commit and push to Github.
+- Heroku uses this list to install the dependencies into the application.
+- However, I didn't need to do this as I had no packages installed.
+2. In the Heroku dashboard, click on 'create a new app'.
+3. Choose a name for the app; every app must have a unique name..
+4. Selected region and click create app. 
+5. Click on settings. 
+6. There was no sensitive data to protect
+7. Add the buildpacks needed by clicking on the buildpack button.
+ - Select python and Node.js.
+8. Click deploy.
+9. Select github as the deployment method and clicked connect to github.
+10. Connectto the correct repository.
+11. Option: manual deployement, which is the choice I went for with this project.
+
+## Credits 
+
+- [Google drawings](https://docs.google.com) - This was used to create the flow chart in the planning process for this project. 
+- Marcel - My mentor Marcel was extreamly helpful as always helping me feel confident in what I have made.
+
+https://docs.google.com
+

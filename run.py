@@ -2,9 +2,20 @@ import random
 import os
 
 
+def initial_screen():
+    print(
+        " ____        _   _   _           _     _ \n"      
+        "| __ )  __ _| |_| |_| | ___  ___| |__ (_)_ __\n" 
+        "|  _ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ \n" 
+        "| |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |\n"
+        "|____/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/\n" 
+        "                                        |_|\n"
+    )
+    input("Press any key:")
+
 def title():
     """
-    Print hangman title.
+    Print title.
     """
     # clear terminal
     os.system("cls" if os.name == "nt" else "clear")
@@ -416,9 +427,9 @@ def loose_section():
     print(
         " __        ______     ______        _______. _______ .______\n"
         "|  |      /  __  \   /  __  \      /       ||   ____||   _  \\n"
-        "|  |     |  |  |  | |  |  |  |    |   (----`|  |__   |  |_)  |\n"
+        "|  |     |  |  |  | |  |  |  |    |    ____`|  |__   |  |_)  |\n"
         "|  |     |  |  |  | |  |  |  |     \   \    |   __|  |      /\n"
-        "|  |____.|  `--'  | |  `--'  | .----)   |   |  |____ |  |\  \\n"
+        "|  |____.|  `--'  | |  `--'  | .____)   |   |  |____ |  |\  \\n"
         "|_______| \______/   \______/  |_______/    |_______|| _| \__|\n"
         "\n\n\n"
     )
@@ -468,6 +479,7 @@ def main():
     """
     Main function that calls all the other functions
     """
+    initial_screen()
     while True:
         welcome_function()
         # Should I do object-oriented method?

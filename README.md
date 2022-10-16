@@ -4,7 +4,7 @@ In this version, each boat occupies a 1 per 1 square and the opponent is the com
 
 <img src="images/responsive.png" alt="image of app on different sized screens">
 
-[Click here to go to the live website!]
+[Click here to go to the live website!](https://cool-battle-ship.herokuapp.com/)
 
 ## Table of contents 
 1. [User experience](#user-experience)
@@ -256,7 +256,7 @@ Steps to the deployement:
 8. Click deploy.
 9. Select github as the deployment method and clicked connect to github.
 10. Connect to the correct repository.
-11. Option: manual deployement.
+11. Option: automatic deployement.
 
 ## Credits 
 

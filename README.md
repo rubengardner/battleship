@@ -11,10 +11,30 @@ In this version, each boat occupies a 1 per 1 square and the opponent is the com
 2. [Structure](structure)
 4. [Features](#features)
 5. [Testing](#testing)
-6. [Deployment](#deployment)
-7. [Credits](#credits)
+6. [Final product](#final-product)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
 
 ## User experience
+
+### User Goals:
+
+First Time Visitor Goals:
+* The concept of the game must be engaging
+
+* Easy to understand the rules
+
+* Easy navigation
+
+Frequent User Goals
+* Check if any features are added since last time the game was played.
+
+User Expectations:
+* The game should be engaging and display a winner/loser result.
+
+* The instructions are clear and simple to follow.
+
+* The game is fun to play
 
 ### Project Goals:
 
@@ -83,6 +103,20 @@ Existing features:
 
     * 0 (red): marks a location that has been shot with no boat.
 
+Game screen screenshot:
+
+![Game screnshot](assets/images/shoot_terminal.png)
+
+* Result message using ASCII art:
+
+    * DIfferent for win, loss or draw
+
+Results screen screenshot:
+
+![Win screnshot](assets/images/win_message.png)
+![Loose screnshot](assets/images/loose_message.png)
+![Draw screnshot](assets/images/draw_screen.png)
+
 * Other features:
 
     * Instructions section
@@ -105,15 +139,16 @@ Future Features:
 
 ### Validator testing
 
-GitPod was used as a validatpr testing. As seen in an image below, GitPod reported 101 problems realted to the code. After cleaning up, all the red and yellow errors were eliminated.
-
+GitPod was used as a validator testing. As seen in an image below, GitPod reported 101 problems realted to the code. After cleaning up, all the red and many yellow erors were removed. Note that the termianl still reported 101 yellow errors. All of the errors were due to the ASCII art print statements.
 Here we can see the GitPod errors before:
+
 ![GitPod errors image](assets/images/python_bug.png)
+
+
 
 ### Manual testing
 
-#### Welcome page
-
+Welcome page
 
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
@@ -121,24 +156,26 @@ Enter "1" | On entering "1", it directs me to the instructions section.| PASS
 Entering "2"|  On entering "2", it directs me to the game set-up section . | PASS
 Entering a something different from 1 or 2| Displays error message and asks user to enter 1 or 2 | PASS
 Blank enter| Displays error message and asks user to enter 1 or 2  | PASS
+Enter " 1" or " 2"| Displays error message and asks user to enter 1 or 2  | PASS
 
+Testing screenshot:
 
+![Welcome page testing](assets/images/welcome_test.png)
 
-#### Instructions section
-
+Instructions section
 
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Enter "1" | On entering "1", it directs me to the game set-up section.| PASS
 Entering a something different from 1| Displays error message and asks user to enter 1. | PASS
 Blank enter| Displays error message and asks user to enter 1.| PASS
+Enter " 1"| Displays error message and asks user to enter 1 or 2  | PASS
 
-####  Game set-up section
+Testing screenshot:
 
+![Instructions page testing](assets/images/instructions_test.png)
 
-##### Board dimensions
-
-
+Board dimensions
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Row input| On entering a row input between 3 and 6, it direct's you to the column section.| PASS
@@ -148,18 +185,22 @@ Column input| On entering a column input between 3 and 6, it direct's you to the
 Column wrong input| On entering a column input diferent from 3 and 6, displays errors message and asks user for a valid input. | PASS
 Column blank enter| Displays error message and asks user to enter a valid input.| PASS
 
+Testing screenshot:
 
+![Board setting page testing](assets/images/board_setting_test.png)
 
-##### Number of boats
+Number of boats
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Boat input| On entering a boat input between 3 and 8, it direct's you to the manual boat placement section.| PASS
 Boat wrong input| On entering a boat input diferent from 3 and 8, displays errors message and asks user for a valid input. | PASS
 Boat blank enter| Displays error message and asks user to enter a valid input.| PASS
 
+Testing screenshot:
 
+![Boat setting page testing](assets/images/boat_setting_test.png)
 
-##### Manual boat placement
+Manual boat placement
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Row input| On entering a row input between 1 and the number of rows choosen, it direct's you to the column section.| PASS
@@ -170,7 +211,11 @@ Column wrong input| On entering a column input diferent from 1 and the number of
 Column blank enter| Displays error message and asks user to enter a valid input.| PASS
 Duplicate value | Displays duplicate error message and asks user to enter a valid input.| PASS
 
-### Game section
+Testing screenshot:
+
+![Boat placement page testing](assets/images/boat_location_test.png)
+![Boat placement page testing](assets/images/boat_test2.png)
+
 
 Shooting
 TEST            | OUTCOME                          | PASS / FAIL  
@@ -183,6 +228,12 @@ Column wrong input| On entering a column input diferent from 1 and the number of
 Column blank enter| Displays error message and asks user to enter a valid input.| PASS
 Duplicate value | Displays duplicate error message and asks user to enter a valid input.| PASS
 
+Testing screenshot:
+
+![Shooting testing](assets/images/shoot_test.png)
+![Shooting testing](assets/images/repeated_shots.png)
+
+## Final product
 
 
 
@@ -191,10 +242,10 @@ Duplicate value | Displays duplicate error message and asks user to enter a vali
 Steps to the deployement:
 
 1. All installed packages in Gitpod,  would need to be added to a list of requirements. 
-- To do this I would have typed pip3 freeze > requirements.txt and hit enter, this would update the requirements.txt file.
+- To do this, type "pip3 freeze > requirements.txt". This updates the requirements.txt file.
 - Commit and push to Github.
 - Heroku uses this list to install the dependencies into the application.
-- However, I didn't need to do this as I had no packages installed.
+- No  need to do this, no packeges are used.
 2. In the Heroku dashboard, click on 'create a new app'.
 3. Choose a name for the app; every app must have a unique name..
 4. Selected region and click create app. 
@@ -204,13 +255,13 @@ Steps to the deployement:
  - Select python and Node.js.
 8. Click deploy.
 9. Select github as the deployment method and clicked connect to github.
-10. Connectto the correct repository.
-11. Option: manual deployement, which is the choice I went for with this project.
+10. Connect to the correct repository.
+11. Option: manual deployement.
 
 ## Credits 
 
 - [Google drawings](https://docs.google.com) - This was used to create the flow chart in the planning process for this project. 
 - Marcel - My mentor Marcel was extreamly helpful as always helping me feel confident in what I have made.
-
-https://docs.google.com
+- GitHub Python Template from [Code Institute](https://github.com/Code-Institute-Org/python-essentials-template)
+- Heroku deployment instructions from Code Institute
 

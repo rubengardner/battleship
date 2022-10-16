@@ -62,14 +62,14 @@ def instructions():
     print(
         "\033[0;34mInstructions:\n"
         "You will first get asked to customize your game. "
-        "You will input the size of the board"
+        "You will input the size \nof the board "
         "and the number of ships you want per user.\n"
         "After that, you will choose the location "
         "of your boat. Each boat is 1 x 1. \n"
-        "After that it's time to shoot! Once one of the players "
-        "has no boats left, the other player has won.\n"
+        "It's time to shoot! Once one of the players "
+        "has no boats left,\nthe other player has won.\n"
         "If you both shoot the last boat of your opponent "
-        "on the same round, it will be a draw. \n\n")
+        "on the same round,\nit will be a draw. \n\n")
 
     # Ask user if they are ready to play.
     print("Are you ready to play?")

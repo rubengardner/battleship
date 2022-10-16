@@ -366,7 +366,8 @@ class Board:
             while True:
                 row_shooting = input(
                     "\033[0;34m"
-                    f"Choose a row between 1 and {self.size[0]}: \n"
+                    f"Choose a row between 1 and {self.size[0]}"
+                    ": \n"
                 )
                 if self.validate_integer_input(row_shooting, self.size[0]):
                     row_shooting = int(row_shooting)
@@ -376,7 +377,8 @@ class Board:
             while True:
                 col_shooting = input(
                     "\033[0;34m"
-                    f"Choose a column between 1 and {self.size[1]}: \n"
+                    f"Choose a column between 1 and {self.size[1]}"
+                    ": \n"
                 )
                 if self.validate_integer_input(col_shooting, self.size[1]):
                     col_shooting = int(col_shooting)
@@ -448,8 +450,6 @@ def game_mechanics(fleet_size, user, enemy):
             enemy.input_shot_location()
             user.automatic_shot_location()
             title()
-
-
 
 
 def play_again():

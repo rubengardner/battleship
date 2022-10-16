@@ -3,6 +3,9 @@ import os
 
 
 def initial_screen():
+    """
+    Print initial message
+    """
     os.system("cls" if os.name == "nt" else "clear")
     print(
         " ____        _   _   _           _     _ \n"
@@ -215,8 +218,6 @@ class Board:
                 if self.validate_boat_placement(rand1, rand2):
                     break
 
-        print(f"\033[0;34mAll {self.boats} boats placed!")
-
     def manual_boat_placement(self):
         """
         Permits the user to select the location of the boats.
@@ -411,7 +412,7 @@ def draw_section():
     """
     Print draw message
     """
-    title()
+    os.system("cls" if os.name == "nt" else "clear")
     print(
         " ____  \n"
         "|  _ \ _ __ __ ___      __  \n"
@@ -425,7 +426,7 @@ def loose_section():
     """
     Print loose message
     """
-    title()
+    os.system("cls" if os.name == "nt" else "clear")
     print(
         " _   \n"
         "| |    ___   ___  ___  ___ _ __  \n"
@@ -439,7 +440,7 @@ def win_section():
     """
     Print win message
     """
-    title()
+    os.system("cls" if os.name == "nt" else "clear")
     print(
         "__   __                                _ \n"
         "\ \ / /__  _   _  __      _____  _ __ | | \n"

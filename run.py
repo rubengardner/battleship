@@ -3,6 +3,7 @@ import os
 
 
 def initial_screen():
+    os.system("cls" if os.name == "nt" else "clear")
     print(
         " ____        _   _   _           _     _ \n"
         "| __ )  __ _| |_| |_| | ___  ___| |__ (_)_ __\n"
@@ -63,11 +64,11 @@ def instructions():
         "You will first get asked to customize your game. "
         "You will input the size of the board"
         "and the number of ships you want per user.\n"
-        "After that, it's time to fire. You will choose the location "
-        "of your shot.\n"
-        "Each boat is 1 x 1. Once one of the player has no boats left, "
-        "the other player has won.\n"
-        "If you both shoot the last boat of your oponent "
+        "After that, you will choose the location "
+        "of your boat. Each boat is 1 x 1. \n"
+        "After that it's time to shoot! Once one of the players "
+        "has no boats left, the other player has won.\n"
+        "If you both shoot the last boat of your opponent "
         "on the same round, it will be a draw. \n\n")
 
     # Ask user if they are ready to play.
@@ -397,7 +398,6 @@ def game_mechanics(fleet_size, user, enemy):
             print("\n")
             print("\033[0;34mEnemy board:")
             enemy.enemy_print()
-            enemy.user_print()          
             print("\n")
             print("\033[0;34m"f"Your last shot was: {enemy.last_shot}")
             print("\033[0;34m"f"Last enemy shot was: {user.last_shot}\n")

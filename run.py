@@ -18,6 +18,48 @@ def initial_screen():
     input("Press any key:\n")
 
 
+def draw_section():
+    """
+    Print draw message
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+    print(
+        " ____  \n"
+        "|  _ \ _ __ __ ___      __  \n"
+        "| | | | '__/ _` \ \ /\ / /  \n"
+        "| |_| | | | (_| |\ V  V /  \n"
+        "|____/|_|  \__,_| \_/\_/  \n\n\n"
+    )
+
+
+def loose_section():
+    """
+    Print loose message
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+    print(
+        " _   \n"
+        "| |    ___   ___  ___  ___ _ __  \n"
+        "| |   / _ \ / _ \/ __|/ _ \ '__| \n"
+        "| |__| (_) | (_) \__ \  __/ | \n"
+        "|_____\___/ \___/|___/\___|_| \n\n\n"
+    )
+
+
+def win_section():
+    """
+    Print win message
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+    print(
+        "__   __                                _ \n"
+        "\ \ / /__  _   _  __      _____  _ __ | | \n"
+        " \ V / _ \| | | | \ \ /\ / / _ \| '_ \| | \n"
+        "  | | (_) | |_| |  \ V  V / (_) | | | |_| \n"
+        "  |_|\___/ \__,_|   \_/\_/ \___/|_| |_(_) \n\n\n"
+    )
+
+
 def title():
     """
     Print title.
@@ -408,46 +450,6 @@ def game_mechanics(fleet_size, user, enemy):
             title()
 
 
-def draw_section():
-    """
-    Print draw message
-    """
-    os.system("cls" if os.name == "nt" else "clear")
-    print(
-        " ____  \n"
-        "|  _ \ _ __ __ ___      __  \n"
-        "| | | | '__/ _` \ \ /\ / /  \n"
-        "| |_| | | | (_| |\ V  V /  \n"
-        "|____/|_|  \__,_| \_/\_/  \n\n\n"
-    )
-
-
-def loose_section():
-    """
-    Print loose message
-    """
-    os.system("cls" if os.name == "nt" else "clear")
-    print(
-        " _   \n"
-        "| |    ___   ___  ___  ___ _ __  \n"
-        "| |   / _ \ / _ \/ __|/ _ \ '__| \n"
-        "| |__| (_) | (_) \__ \  __/ | \n"
-        "|_____\___/ \___/|___/\___|_| \n\n\n"
-    )
-
-
-def win_section():
-    """
-    Print win message
-    """
-    os.system("cls" if os.name == "nt" else "clear")
-    print(
-        "__   __                                _ \n"
-        "\ \ / /__  _   _  __      _____  _ __ | | \n"
-        " \ V / _ \| | | | \ \ /\ / / _ \| '_ \| | \n"
-        "  | | (_) | |_| |  \ V  V / (_) | | | |_| \n"
-        "  |_|\___/ \__,_|   \_/\_/ \___/|_| |_(_) \n\n\n"
-    )
 
 
 def play_again():

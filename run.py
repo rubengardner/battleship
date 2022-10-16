@@ -21,7 +21,8 @@ def title():
     """
     # clear terminal
     os.system("cls" if os.name == "nt" else "clear")
-    print("\033[1;37m""BATTLESHIP".center(80, "-"))
+    print("\033[1;37m")
+    print("BATTLESHIP".center(80, "-"))
     print("\n")
 
 
@@ -407,6 +408,9 @@ def game_mechanics(fleet_size, user, enemy):
 
 
 def draw_section():
+    """
+    Print draw message
+    """
     title()
     print(
         " ____  \n"
@@ -418,6 +422,9 @@ def draw_section():
 
 
 def loose_section():
+    """
+    Print loose message
+    """
     title()
     print(
         " _   \n"
@@ -429,6 +436,9 @@ def loose_section():
 
 
 def win_section():
+    """
+    Print win message
+    """
     title()
     print(
         "__   __                                _ \n"
@@ -444,7 +454,6 @@ def play_again():
     Permits user to play again or to exit the game after
     finishing
     """
-
     play = input(
         "\033[0;34mDo you wish to play again?"
         " If so press 1, if not press 2:\n"

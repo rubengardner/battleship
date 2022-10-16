@@ -192,9 +192,9 @@ class Board:
         that haven't been hit
         """
         for guess in self.guess:
-            self.board[guess[0]][guess[1]] = '033[0;32mX'
+            self.board[guess[0]][guess[1]] = '\033[0;32mX'
         for miss in self.miss:
-            self.board[miss[0] - 1][miss[1]] = '\033[0;31m0'
+            self.board[miss[0]][miss[1]] = '\033[0;31m0'
         for row in self.board:
             print("\033[0;37m ".join(row))
 
@@ -396,8 +396,8 @@ def game_mechanics(fleet_size, user, enemy):
             user.user_print()
             print("\n")
             print("\033[0;34mEnemy board:")
-            enemy.user_print()
-            
+            enemy.enemy_print()
+            enemy.user_print()          
             print("\n")
             print("\033[0;34m"f"Your last shot was: {enemy.last_shot}")
             print("\033[0;34m"f"Last enemy shot was: {user.last_shot}\n")
@@ -411,11 +411,11 @@ def draw_section():
     title()
     print(
         " _______  .______       ___   ____    __    ____\n"
-        "|       \ |   _  \     /   \  \   \  /  \  /   /\n"
-        "|  .--.  ||  |_)  |   /  ^  \  \   \/    \/   /\n"
-        "|  |  |  ||      /   /  /_\  \  \            /\n"
-        "|  '--'  ||  |\  \  /  _____  \  \    /\    /\n"
-        "|_______/ | _| \__\/__/     \__\  \__/  \__/\n"
+        "|       \ |   _  \     /   \  \   \  /  \  /   / \n"
+        "|  .--.  ||  |_)  |   /  ^  \  \   \/    \/   / \n"
+        "|  |  |  ||      /   /  /_\  \  \            / \n"
+        "|  '--'  ||  |\  \  /  _____  \  \    /\    / \n"
+        "|_______/ | _| \__\/__/     \__\  \__/  \__/ \n"
         "\n\n\n"
     )
 
@@ -423,12 +423,12 @@ def draw_section():
 def loose_section():
     title()
     print(
-        " __        ______     ______        _______. _______ .______\n"
-        "|  |      /  __  \   /  __  \      /       ||   ____||   _  \\n"
-        "|  |     |  |  |  | |  |  |  |    |    ____`|  |__   |  |_)  |\n"
-        "|  |     |  |  |  | |  |  |  |     \   \    |   __|  |      /\n"
-        "|  |____.|  `--'  | |  `--'  | .____)   |   |  |____ |  |\  \\n"
-        "|_______| \______/   \______/  |_______/    |_______|| _| \__|\n"
+        " __        ______     ______        _______. _______ .______ \n"
+        "|  |      /  __  \   /  __  \      /       ||   ____||   _  \ \n"
+        "|  |     |  |  |  | |  |  |  |    |    ____`|  |__   |  |_)  | \n"
+        "|  |     |  |  |  | |  |  |  |     \   \    |   __|  |      / \n"
+        "|  |____.|  `--'  | |  `--'  | .____)   |   |  |____ |  |\  \ \n"
+        "|_______| \______/   \______/  |_______/    |_______|| _| \__| \n"
         "\n\n\n"
     )
 

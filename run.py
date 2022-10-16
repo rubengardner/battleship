@@ -8,12 +8,14 @@ def initial_screen():
     """
     os.system("cls" if os.name == "nt" else "clear")
     print(
-        " ____        _   _   _           _     _ \n"
-        "| __ )  __ _| |_| |_| | ___  ___| |__ (_)_ __\n"
-        "|  _ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ \n"
-        "| |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |\n"
-        "|____/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/\n"
-        "                                        |_|\n"
+        """ 
+        .____        _   _   _           _     _ 
+        | __ )  __ _| |_| |_| | ___  ___| |__ (_)_ __
+        |  _ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
+        | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
+        |____/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/
+                                                |_|
+    """
     )
     input("Press any key:\n")
 
@@ -24,11 +26,13 @@ def draw_section():
     """
     os.system("cls" if os.name == "nt" else "clear")
     print(
-        " ____  \n"
-        "|  _ \ _ __ __ ___      __  \n"
-        "| | | | '__/ _` \ \ /\ / /  \n"
-        "| |_| | | | (_| |\ V  V /  \n"
-        "|____/|_|  \__,_| \_/\_/  \n\n\n"
+        """
+        .____  
+        |  _ \ _ __ __ ___      __
+        | | | | '__/ _` \ \ /\ / /
+        | |_| | | | (_| |\ V  V /
+        |____/|_|  \__,_| \_/\_/
+        """
     )
 
 
@@ -38,11 +42,13 @@ def loose_section():
     """
     os.system("cls" if os.name == "nt" else "clear")
     print(
-        " _   \n"
-        "| |    ___   ___  ___  ___ _ __  \n"
-        "| |   / _ \ / _ \/ __|/ _ \ '__| \n"
-        "| |__| (_) | (_) \__ \  __/ | \n"
-        "|_____\___/ \___/|___/\___|_| \n\n\n"
+        """
+        ._
+        | |    ___   ___  ___  ___ _ __
+        | |   / _ \ / _ \/ __|/ _ \ '__|
+        | |__| (_) | (_) \__ \  __/ |
+        |_____\___/ \___/|___/\___|_|
+        """
     )
 
 
@@ -52,11 +58,13 @@ def win_section():
     """
     os.system("cls" if os.name == "nt" else "clear")
     print(
-        "__   __                                _ \n"
-        "\ \ / /__  _   _  __      _____  _ __ | | \n"
-        " \ V / _ \| | | | \ \ /\ / / _ \| '_ \| | \n"
-        "  | | (_) | |_| |  \ V  V / (_) | | | |_| \n"
-        "  |_|\___/ \__,_|   \_/\_/ \___/|_| |_(_) \n\n\n"
+        """
+        __   __                                _
+        \ \ / /__  _   _  __      _____  _ __ | |
+        .\ V / _ \| | | | \ \ /\ / / _ \| '_ \| |
+        . | | (_) | |_| |  \ V  V / (_) | | | |_|
+        . |_|\___/ \__,_|   \_/\_/ \___/|_| |_(_)
+        """
     )
 
 
@@ -440,7 +448,6 @@ def game_mechanics(fleet_size, user, enemy):
             # Displays the boards
             print("\033[0;34mUser board:")
             user.user_print()
-            print("\n")
             print("\033[0;34mEnemy board:")
             enemy.enemy_print()
             print("\n")
@@ -477,7 +484,6 @@ def main():
     initial_screen()
     while True:
         welcome_function()
-        # Should I do object-oriented method?
         # Asks for inputs about the number of boats and size of the boards
         board_size = input_board_size()
         fleet_size = input_fleet_size()

@@ -235,6 +235,34 @@ Testing screenshot:
 
 ## Final product
 
+Welcome page:
+
+![Welcome page](assets/images/welcome.png)
+
+Instructions page:
+
+![Instructions page](assets/images/instructions.png)
+
+Boat input:
+
+![Boat input page](assets/images/boat_input.png)
+
+Game page:
+
+![Game page](assets/images/game_section.png)
+
+Win message:
+
+![Win page](assets/images/win.png)
+
+Loose message:
+
+![Loose page](assets/images/looser.png)
+
+Draw message:
+
+![Draw page](assets/images/draw.png)
+
 
 
 ## Deployment 

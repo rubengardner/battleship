@@ -7,9 +7,10 @@ def initial_screen():
     Print initial message
     """
     os.system("cls" if os.name == "nt" else "clear")
+    print("\u001b[0m")
     print(
-        """ 
-        .____        _   _   _           _     _ 
+        """
+        .____        _   _   _           _     _.
         | __ )  __ _| |_| |_| | ___  ___| |__ (_)_ __
         |  _ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
         | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
@@ -25,6 +26,7 @@ def draw_section():
     Print draw message
     """
     os.system("cls" if os.name == "nt" else "clear")
+    print("\u001b[0m")
     print(
         """
         .____  
@@ -41,6 +43,7 @@ def loose_section():
     Print loose message
     """
     os.system("cls" if os.name == "nt" else "clear")
+    print("\u001b[0m")
     print(
         """
         ._
@@ -57,6 +60,7 @@ def win_section():
     Print win message
     """
     os.system("cls" if os.name == "nt" else "clear")
+    print("\u001b[0m")
     print(
         """
         __   __                                _

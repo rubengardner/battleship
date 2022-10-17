@@ -134,9 +134,9 @@ Results screen screenshot:
 
 External libraries:
 
-* Random library: Used to randomize the the placement and shoting of boats for the enemy
+* [Random library](https://docs.python.org/3/library/random.html): Used to randomize the the placement and shoting of boats for the enemy
 
-* Os library: Permits clearing the terminal, making the game have a nicer feeling.
+* [Os library](https://docs.python.org/3/library/os.html): Permits clearing the terminal, making the game have a nicer feeling.
 
 Future Features:
 

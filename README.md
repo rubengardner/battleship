@@ -1,8 +1,8 @@
 # Battleship
-Battleship is a strategy type guessing game for two players. It is played on ruled grids on which each player's fleet of warships is marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
+Battleship is a strategy-type guessing game for two players. It is played on ruled grids on which each player's fleet of warships is marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
 In this version, each boat occupies a 1 per 1 square and the opponent is the computer. All its functions have been randomized using python.
 
-<img src="images/responsive.png" alt="image of app on different sized screens">
+![Responsivennes screenshot](assets/images/screens.png)
 
 [Click here to go to the live website!](https://cool-battle-ship.herokuapp.com/)
 
@@ -11,25 +11,27 @@ In this version, each boat occupies a 1 per 1 square and the opponent is the com
 2. [Structure](structure)
 4. [Features](#features)
 5. [Testing](#testing)
-6. [Final product](#final-product)
-7. [Deployment](#deployment)
-8. [Credits](#credits)
+6. [Bugs](#bugs)
+7. [Final product](#final-product)
+8. [Deployment](#deployment)
+
+9. [Credits](#credits)
 
 ## User experience
 
 ### User Goals:
 
-First Time Visitor Goals:
+First-time visitor goals:
 * The concept of the game must be engaging
 
 * Easy to understand the rules
 
 * Easy navigation
 
-Frequent User Goals
-* Check if any features are added since last time the game was played.
+Frequent user goals
+* Check if any features are added since the last time the game was played.
 
-User Expectations:
+User expectations:
 * The game should be engaging and display a winner/loser result.
 
 * The instructions are clear and simple to follow.
@@ -50,13 +52,13 @@ User Expectations:
 
 ### Color scheme
 
-* Blue ("\033[0;34m"): General text
+* Blue ("\033[0;34m"): General text.
 
-* Red ("\033[0;31m"): Error, wrong input or loosing message
+* Red ("\033[0;31m"): Error or wrong input.
 
-* Green ("\033[0;32m"): Winning messge and correct hit
+* Green ("\033[0;32m"): Correct hit
 
-* White ("\033[0;37m"): Board display and title
+* White ("\033[0;37m"): Board display, title and final message
 
 
 ## Structure 
@@ -77,6 +79,7 @@ Here we can see the game mechanics flowchart:
 Existing features:
 
 * User selects the difficulty of the game:
+
     * Chooses the size of the board. Rows and columns are set independently, no need for a square board. Sizes can be set between 3 and 6.
 
     * Chooses the number of ships. Limited to 8, since the smallest board permitted has 9 locations.
@@ -101,7 +104,7 @@ Existing features:
 
     * X (green): marks a boat that has been hit by the other player.
 
-    * 0 (red): marks a location that has been shot with no boat.
+    * 0 (red): marks an empty location that has been shot.
 
 Game screen screenshot:
 
@@ -109,13 +112,13 @@ Game screen screenshot:
 
 * Result message using ASCII art:
 
-    * DIfferent for win, loss or draw
+    * Different for win, loss or draw
 
 Results screen screenshot:
 
-![Win screnshot](assets/images/win_message.png)
-![Loose screnshot](assets/images/loose_message.png)
-![Draw screnshot](assets/images/draw_screen.png)
+![Win screnshot](assets/images/win.png)
+![Loose screnshot](assets/images/looser.png)
+![Draw screnshot](assets/images/draw.png)
 
 * Other features:
 
@@ -139,7 +142,7 @@ Future Features:
 
 ### Validator testing
 
-GitPod was used as a validator testing. As seen in an image below, GitPod reported 101 problems realted to the code. After cleaning up, all the red and many yellow erors were removed. Note that the termianl still reported 101 yellow errors. All of the errors were due to the ASCII art print statements.
+GitPod was used as a validator testing. As seen in the image below, GitPod reported 101 problems related to the code. After cleaning up, all the red and many yellow errors were removed. Note that the terminal still reported 101 yellow errors. All of the errors were due to the ASCII art print statements.
 Here we can see the GitPod errors before:
 
 ![GitPod errors image](assets/images/python_bug.png)
@@ -152,11 +155,11 @@ Welcome page
 
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
-Enter "1" | On entering "1", it directs me to the instructions section.| PASS
-Entering "2"|  On entering "2", it directs me to the game set-up section . | PASS
-Entering a something different from 1 or 2| Displays error message and asks user to enter 1 or 2 | PASS
-Blank enter| Displays error message and asks user to enter 1 or 2  | PASS
-Enter " 1" or " 2"| Displays error message and asks user to enter 1 or 2  | PASS
+Enter "1" | On entering "1", it directs me to the instructions section| PASS
+Entering "2"|  On entering "2", it directs me to the game set-up section| PASS
+Entering something different from 1 or 2| Displays error message and asks user to enter 1 or 2| PASS
+Blank enter| Displays error message and asks the user to enter 1 or 2| PASS
+Enter " 1" or " 2"| Displays error message and asks the user to enter 1 or 2| PASS
 
 Testing screenshot:
 
@@ -166,10 +169,10 @@ Instructions section
 
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
-Enter "1" | On entering "1", it directs me to the game set-up section.| PASS
-Entering a something different from 1| Displays error message and asks user to enter 1. | PASS
-Blank enter| Displays error message and asks user to enter 1.| PASS
-Enter " 1"| Displays error message and asks user to enter 1 or 2  | PASS
+Enter "1" | On entering "1", it directs me to the game set-up section| PASS
+Entering something different from 1| Displays error message and asks user to enter 1| PASS
+Blank enter| Displays error message and asks the user to enter 1| PASS
+Enter " 1"| Displays error message and asks the user to enter 1 or 2| PASS
 
 Testing screenshot:
 
@@ -179,11 +182,11 @@ Board dimensions
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Row input| On entering a row input between 3 and 6, it direct's you to the column section.| PASS
-Row wrong input| On entering a row input diferent from 3 and 6, displays errors message and asks user for a valid input. | PASS
-Row blank enter| Displays error message and asks user to enter a valid input.| PASS
+Row wrong input| On entering a row input different from 3 and 6, displays an error message and asks the user for valid input| PASS
+Row blank enter| Displays error message and asks the user to enter a valid input.| PASS
 Column input| On entering a column input between 3 and 6, it direct's you to the boat section.| PASS
-Column wrong input| On entering a column input diferent from 3 and 6, displays errors message and asks user for a valid input. | PASS
-Column blank enter| Displays error message and asks user to enter a valid input.| PASS
+Column wrong input| On entering a column input different from 3 and 6, displays an error message and asks the user for valid input| PASS
+Column blank enter| Displays an error message and asks the user to enter a valid input.| PASS
 
 Testing screenshot:
 
@@ -193,8 +196,8 @@ Number of boats
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Boat input| On entering a boat input between 3 and 8, it direct's you to the manual boat placement section.| PASS
-Boat wrong input| On entering a boat input diferent from 3 and 8, displays errors message and asks user for a valid input. | PASS
-Boat blank enter| Displays error message and asks user to enter a valid input.| PASS
+Boat wrong input| On entering a boat input different from 3 and 8, displays an error message and asks user for a valid input| PASS
+Boat blank enter| Displays an error message and asks the user to enter a valid input.| PASS
 
 Testing screenshot:
 
@@ -203,13 +206,13 @@ Testing screenshot:
 Manual boat placement
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
-Row input| On entering a row input between 1 and the number of rows choosen, it direct's you to the column section.| PASS
-Row wrong input| On entering a row input diferent from 1 and the number of rows choosen, displays errors message and asks user for a valid input. | PASS
-Column blank enter| Displays error message and asks user to enter a valid input.| PASS
-Column input| On entering a column input between 1 and the number of columns choosen, it direct's you to the next section.| PASS
-Column wrong input| On entering a column input diferent from 1 and the number of column choosen, displays errors message and asks user for a valid input. | PASS
-Column blank enter| Displays error message and asks user to enter a valid input.| PASS
-Duplicate value | Displays duplicate error message and asks user to enter a valid input.| PASS
+Row input| On entering a row input between 1 and the number of rows chosen, it direct's you to the column section.| PASS
+Row wrong input| On entering a row input diferent from 1 and the number of rows chosen, displays an error message and asks the user for a valid input. | PASS
+Column blank enter| Displays an error message and asks the user to enter a valid input.| PASS
+Column input| On entering a column input between 1 and the number of columns chosen, it direct's you to the next section.| PASS
+Column wrong input| On entering a column input diferent from 1 and the number of column chosen, displays an error message and asks the user for a valid input. | PASS
+Column blank enter| Displays an error message and asks the user to enter a valid input.| PASS
+Duplicate value | Displays a duplicate error message and asks the user to enter a valid input.| PASS
 
 Testing screenshot:
 
@@ -220,18 +223,22 @@ Testing screenshot:
 Shooting
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
-Row input| On entering a row input between 1 and the number of rows choosen, it direct's you to the column section.| PASS
-Row wrong input| On entering a row input diferent from 1 and the number of rows choosen, displays errors message and asks user for a valid input. | PASS
-Column blank enter| Displays error message and asks user to enter a valid input.| PASS
-Column input| On entering a column input between 1 and the number of columns choosen, it direct's you to the next section.| PASS
-Column wrong input| On entering a column input diferent from 1 and the number of column choosen, displays errors message and asks user for a valid input. | PASS
-Column blank enter| Displays error message and asks user to enter a valid input.| PASS
-Duplicate value | Displays duplicate error message and asks user to enter a valid input.| PASS
+Row input| On entering a row input between 1 and the number of rows chosen, it direct's you to the column section.| PASS
+Row wrong input| On entering a row input different from 1 and the number of rows chosen, displays an error message and asks user for a valid input. | PASS
+Column blank enter| Displays an error message and asks the user to enter a valid input.| PASS
+Column input| On entering a column input between 1 and the number of columns chosen, it direct's you to the next section.| PASS
+Column wrong input| On entering a column input different from 1 and the number of column chosen, displays an error message and asks the user for a valid input. | PASS
+Column blank enter| Displays an error message and asks the user to enter a valid input.| PASS
+Duplicate value | Displays a duplicate error message and asks the user to enter a valid input.| PASS
 
 Testing screenshot:
 
 ![Shooting testing](assets/images/shoot_test.png)
 ![Shooting testing](assets/images/repeated_shots.png)
+
+## Bugs
+
+No bugs were encountered. The game runs indefinitely as long as the user wants without any problems.
 
 ## Final product
 
@@ -267,29 +274,29 @@ Draw message:
 
 ## Deployment 
 
-Steps to the deployement:
+Steps to the deployment:
 
 1. All installed packages in Gitpod,  would need to be added to a list of requirements. 
 - To do this, type "pip3 freeze > requirements.txt". This updates the requirements.txt file.
 - Commit and push to Github.
 - Heroku uses this list to install the dependencies into the application.
-- No  need to do this, no packeges are used.
+- No need to do this, no packages are used.
 2. In the Heroku dashboard, click on 'create a new app'.
-3. Choose a name for the app; every app must have a unique name..
-4. Selected region and click create app. 
+3. Choose a name for the app; every app must have a unique name.
+4. Selected the region and click create app. 
 5. Click on settings. 
 6. There was no sensitive data to protect
 7. Add the buildpacks needed by clicking on the buildpack button.
- - Select python and Node.js.
+ - Select Python and Node.js.
 8. Click deploy.
 9. Select github as the deployment method and clicked connect to github.
 10. Connect to the correct repository.
-11. Option: automatic deployement.
+11. Option: automatic deployment.
 
 ## Credits 
 
 - [Google drawings](https://docs.google.com) - This was used to create the flow chart in the planning process for this project. 
-- Marcel - My mentor Marcel was extreamly helpful as always helping me feel confident in what I have made.
 - GitHub Python Template from [Code Institute](https://github.com/Code-Institute-Org/python-essentials-template)
 - Heroku deployment instructions from Code Institute
+- [et9719 hangman's project](https://github.com/et9719/hangman), which gave me the idea for the title() function in the run.py file.
 

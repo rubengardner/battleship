@@ -1,4 +1,6 @@
+# Import random module for the random placement and shooting of boats.
 import random
+# Import module for the clearing of the terminal
 import os
 
 
@@ -12,7 +14,7 @@ def initial_screen():
         """
         .____        _   _   _           _     _.
         | __ )  __ _| |_| |_| | ___  ___| |__ (_)_ __
-        |  _ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
+        |  _ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \.
         | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
         |____/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/
                                                 |_|
@@ -29,7 +31,7 @@ def draw_section():
     print("\u001b[0m")
     print(
         """
-        .____  
+        .____
         |  _ \ _ __ __ ___      __
         | | | | '__/ _` \ \ /\ / /
         | |_| | | | (_| |\ V  V /
@@ -258,8 +260,8 @@ class Board:
 
     def random_boat_selection(self):
         """
-        Inputs a random boat selection that can be used by the user
-        and always by the enemy
+        Inputs a random boat selection used
+        by the enemy
         """
         # Converting index user friendly to python friendly
         index1 = self.size[0] - 1

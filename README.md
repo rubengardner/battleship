@@ -148,10 +148,16 @@ Future Features:
 
 ### Validator testing
 
-GitPod was used as a validator testing. As seen in the image below, GitPod reported 101 problems related to the code. After cleaning up, all the red and many yellow errors were removed. Note that the terminal still reported 101 yellow errors. All of the errors were due to the ASCII art print statements.
-Here we can see the GitPod errors before:
+GitPod was used as a validator testing. As seen in the image below, GitPod reported 101 problems related to the code. After cleaning up, all the red and many yellow errors were removed. Note that the terminal still reported 84 yellow errors. All of the errors were due to the ASCII art print statements.
+Here we can see the GitPod errors before and after:
+
+Before:
 
 ![GitPod errors image](assets/images/python_bug.png)
+
+After:
+
+![GitPod errors image](assets/images/errors_after.png)
 
 
 

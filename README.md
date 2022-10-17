@@ -132,6 +132,12 @@ Results screen screenshot:
 
     * Title of the game is always shown
 
+External libraries:
+
+* Random library: Used to randomize the the placement and shoting of boats for the enemy
+
+* Os library: Permits clearing the terminal, making the game have a nicer feeling.
+
 Future Features:
 
 * Ships with different sizes
